@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Power Supply for PC</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="css/buttons.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,300&family=Chakra+Petch:wght@300&family=Cormorant+Garamond:ital,wght@0,500;1,300&family=Gabriela&family=Montserrat:wght@200&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/dark.css">
+</head> 
+<body>
+    <div class="wrapper container-fluid d-flex flex-column p-0 m-0">
+        <header>
+            <div class="upper_header container-fluid">
+                <div class="container">
+                    <div class="row justify-content-end align-items-center">
+                        <a href="#" class="profile col-2 d-flex justify-content-center align-items-center" title="your profile...">
+                            <figure class="d-flex align-items-center my-1">
+                                <img src="img/icons/admin_light.png" alt="admin_icon..." id="profile_icon" class="icon">
+                                <figcaption class="status">Адміністратор</figcaption>
+                            </figure>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header container-fluid text-light">
+
+                    <div class="row justify-content-between elements">
+                        <div id="menu" class="icon_img menu col-sm-2 p-3 ms-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
+                            <!--  -->
+                            <div class="line"></div>
+                            <div class="line"></div>
+                            <div class="line"></div>
+                        </div>
+                        
+                        <!-- <div class="icon_img menu col-1 p-3 ms-3">
+                            <img src="img/icons/menu_light.png" alt="menu" title="main menu..." id="menu">
+                        </div> -->
+
+                        
+
+                        <a href="#" class="logo col-lg-2 col-md-2 col-sm-4  fs-1 fw-bold justify-content-center" title="Go home">
+                            Tech <span style="color: orange;">NO</span>
+                        </a>
+                        
+                        <div class="search col-5 px-2">
+                            <input type="search" name="search" id="search" class="bg-light ps-3 pe-2 py-1" placeholder="Знайти щось...">
+                            <div class="icon_search">
+                                <button class="find_btn text-dark px-2 fst-italic">
+                                    <img src="img/icons/search.png" id="search_img">
+                                    <span class="d-none d-lg-inline">Знайти</span> 
+                                </button>
+                            </div> 
+                        </div>
+
+                        <div class="login col-1 d-none d-lg-flex">
+                            <button class="create_btn fw-bold">Create</button>
+                        </div>
+
+                        <div class="icon_img theme_toggle col-1 p-3 d-none d-lg-block" title="toggle theme...">
+                            <img src="img/icons/theme_light.png" class="icon pe-1" >
+                        </div>
+
+                        <div class="icon_img favorite col-1 p-3 d-none d-lg-block" title="your favorites...">
+                            <img src="img/icons/favorite_light.png" class="icon pe-1">
+                        </div>
+
+                        <div class="icon_img basket col-1 p-3 me-3" title="your basket...">
+                            <img src="img/icons/basket_light.png" class="icon pe-1">
+                        </div>
+                        
+                    </div>
+
+            </div>
+           
+        </header>
+
+        <!-- style="width: 14.5rem;" -->
+        <!-- style="width: 15.8rem;" -->
+
+        <main>
+            <div class="main container-fluid pb-2">
+                <div class="row justify-content-evenly">
+                    <!-- <div id="sidebar" class="sidebar-hidden p-3 col-3 bg-primary text-light d-flex flex-column">
+                        <label for="brand1"><input type="checkbox" name="brand1" id="brand1">Checkbox 1</label>
+                        <label for="brand2"><input type="checkbox" name="brand2" id="brand2">Checkbox 2</label>
+                        <label for="brand3"><input type="checkbox" name="brand3" id="brand3">Checkbox 3</label>
+                        <label for="brand4"><input type="checkbox" name="brand4" id="brand4">Checkbox 4</label>
+                        <label for="brand5"><input type="checkbox" name="brand5" id="brand5">Checkbox 5</label>
+                    </div> -->
+                    <div class="empty col-3" style="background-color: darkgoldenrod;"></div>
+                    <div class="offcanvas offcanvas-start col-3 p-0" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Обрати фільтри</h5>
+                            <button type="button" class="btn-close icon" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            
+<!--                             <div class="checkboxes bg-primary px-2">
+                                <div class="checkboxes_brand d-inline-block bg-secondary">
+ 
+                                    
+
+                            </div>
+                            </div> -->
+
+                            <div class="accordion" id="accordionPanelsStayOpenExample">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                        Бренд
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                        <div class="accordion-body">
+                                            <!-- <div class="checkbox w-100">
+                                                <input class="form-check-input" type="checkbox" value="" id="brand1">
+                                                <label class="form-check-label ms-2 text-dark" for="brand1">
+                                                    Бренд 1
+                                                </label>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                        Потужність
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingTwo">
+                                        <div class="accordion-body"></div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                        Підключення кабелів
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingThree">
+                                        <div class="accordion-body"></div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                                        <button class="accordion-button collapsed show" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                                        Діаметр вентилятора
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingFour">
+                                        <div class="accordion-body"></div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                                        <button class="accordion-button collapsed show" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="true" aria-controls="panelsStayOpen-collapseFive">
+                                        Наявність
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingFive">
+                                        <div class="accordion-body"></div>
+                                    </div>
+                                </div>
+                                
+                              </div>
+
+                        </div>
+                    </div>
+                    <div class="sidebar-overlay sidebar-display" data-bs-dismiss="offcanvas"></div>
+                    <div class="items container col-12 d-flex flex-wrap justify-content-center px-0">
+                        <div class="items_header container d-flex justify-content-between p-0">
+                            <div class="filters bg-danger col-9"></div>
+                                
+                            <div class="sort col-3 d-flex justify-content-end align-items-center">
+                                <span>Спочатку</span>
+                                <div class="btn-group ms-2" role="group" aria-label="Button group with nested dropdown">
+                                    <div class="btn-group" role="group">
+                                        <button id="btnSortDrop" type="button" class="btn bg-dark text-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Нові товари
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="btnGroupDrop1">
+                                            <li><a class="dropdown-item text-light" href="#" id="new_products">Нові товари</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item text-light" href="#" id="expensive_products">Найдорожчі</a></li>
+                                            <li><a class="dropdown-item text-light" href="#" id="cheap_products">Найдешевші</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item text-light" href="#" id="more_powerful">Більш потужні</a></li>
+                                            <li><a class="dropdown-item text-light" href="#" id="less_powerful">Менш потужні</a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item text-light" href="#" id="promotional_products">Акційні товари</a></li>
+                                        </ul>
+                                    </div>  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="itembar container d-flex justify-content-start flex-wrap pb-2"></div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </main>
+
+        <footer class="container-fluid text-justify p-3">
+            <h3>Footer text</h3>
+            <button class="p-2 edit_btn resetLS w-25">Reset LS</button>
+            <p class="f-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro nisi ipsam facilis non veniam culpa. Veritatis magnam est aut at, tempora eligendi itaque illo quia provident ad quae a eum?
+                A, itaque explicabo? Nostrum, quidem? Omnis eum numquam unde odio deserunt, temporibus nulla doloremque fugiat at suscipit maiores dolore. Eum iure minus rerum sequi facere culpa explicabo, commodi cupiditate quaerat!
+                Nemo, labore non? Mollitia vel dolorem a aliquid molestias dicta provident fuga similique quas nam? Corporis rerum officia, porro magnam veritatis tenetur iste, deleniti nisi amet earum provident dicta possimus!
+            </p>
+            <div class="last m-auto bg-dark p-3">NoCopyright &copy; Techno 2023</div>
+        </footer>
+    </div>
+
+    <div class="modal-container container-fluid m-0 p-0">
+        <div class="overlay" data-close="true" id="modal-overlay">
+            <div class="modal_window" id="modal-product">
+                <div class="modal_header">
+                    <div class="modal_title d-flex align-items-center">
+                        <h4 id="modal_title">Product Options</h4>
+                    </div>
+                    <button class="modal-cross" data-close="true">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal_body">
+                    <table id="form_item">
+                        <form name="productForm" enctype="multipart/form-data" method="post">
+                            <input type="hidden" name="productId" id="productId">
+                            <input type="hidden" name="oldCloudinaryPublicId" id="oldCloudinaryPublicId">
+                            <input type="hidden" name="oldImagePath" id="oldImagePath">
+                            <tr class="first">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><label for="product" class="char">Назва товару:</label></td>
+                                <td colspan="6"><input type="text" id="product" class="input_text" value="Блок живлення для ПК" readonly></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><label for="producer" class="char">Виробник:</label></td>
+                                <td colspan="2">
+                                    <input type="text" list="brand" name="text1" id="producer" class="long input_text" placeholder="AeroCool">
+                                    <datalist id="brand">
+                                        <option>1stPlayer</option>
+                                        <option>AeroCool</option>
+                                        <option>AZZA</option>
+                                        <option>Chieftec</option>
+                                        <option>Cooler Master</option>
+                                        <option>Corsair</option>
+                                        <option>Cougar</option>
+                                        <option>Deepcool</option>
+                                        <option>Gamemax</option>
+                                        <option>Gigabyte</option>
+                                        <option>Modecom</option>
+                                        <option>QUBE</option>
+                                        <option>Seasonic</option>
+                                        <option>Segotep</option>
+                                        <option>Silver Stone</option>
+                                        <option>FSP</option>
+                                        <option>Xilence</option>
+                                        <option>Zalman</option>
+                                    </datalist>
+                                </td>
+                                <td><label for="model" class="char">Модель:</label></td>
+                                <td colspan="3"><input type="text" name="model" id="model" class="long input_text" placeholder="PSAZ-750G"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><label for="power" class="char">Сумарна потужність:</label></td>
+                                <td><input type="text" name="text1" id="power" class="short input_text" placeholder="750"></td>
+                                <td><label for="power" class="measure">Вт</label></td>
+                                <td colspan="4">
+                                    <label for="product" class="image_lbl">Зображення товару:</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><label for="cables" class="char">Підключення кабелів:</label></td>
+                                <td colspan="2">
+                                    <select name="cables" id="cables">
+                                        <option>Модульне</option>
+                                        <option>Частково модульне</option>
+                                        <option>Не модульне</option>
+                                    </select>
+                                </td>
+                                <td colspan="4" rowspan="3">
+                                    <div class="image">
+                                        <input type="image" id="image" alt="" accept="image/*">
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><label for="fan" class="char">Діаметр вентилятора:</label></td>
+                                <td><input type="text" name="text1" id="fan" class="short input_text" placeholder="120"></td>
+                                <td><label for="fan" class="measure">мм</label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><label for="efficiency" class="char">ККД:</label></td>
+                                <td><input type="text" name="text1" id="efficiency" class="short input_text" placeholder="85"></td>
+                                <td><label for="efficiency" class="measure">%</label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><label for="availability" class="char">Наявність товару:</label></td>
+                                <td colspan="2">
+                                    <select name="availability" id="availability">
+                                        <option>Є в наявності</option>
+                                        <option>Обмежена кількість</option>
+                                        <option>Немає в наявності</option>
+                                    </select>
+                                </td>
+                                <td colspan="4">
+                                    <div class="file-load-block">
+                                        <input type="file" value="" id="file">
+                                        <div class="fileLoad">
+                                            <button>Вибрати файл</button>
+                                            <input type="text" value="Файл не вибрано" id="image_path" readonly>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="2"><label for="price" class="char">Ціна товару:</label></td>
+                                <td><input type="text" name="price" id="price" class="short input_text" placeholder="8 999"></td>
+                                <td>
+                                    <label for="price" class="measure">₴ (грн)</label>
+                                </td>
+                                <td>
+                                    <label for="discount-checkbox-toggle"><input type="checkbox" class="form-check-input" id="discount-checkbox-toggle">Знижка</label>
+                                </td>
+                                <td><label for="discount" class="char toggle">Знижка:</label></td>
+                                <td><input type="text" id="discount" class="input_text short toggle" placeholder="5"></td>
+                                <td><label for="discount" class="measure toggle">%</label></td>
+                                
+                            </tr>
+                            <tr class="last">
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </form>
+                    </table>
+                </div>
+                <div class="modal_footer">
+                    <div class="buttons w-25">
+                        <button class="add_btn" style="display: none;">Добавити</button>
+                        <button class="edit_btn" style="display: none;">Редагувати</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal_window" id="modal-login">
+                <div class="modal_header">
+                    <div class="modal_title d-flex align-items-center">
+                        <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+                            <label class="btn btn-outline-warning" for="btnradio1">Увійти</label>
+                            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+                            <label class="btn btn-outline-danger" for="btnradio2">Реєстрація</label>
+                        </div>
+                    </div>
+                    <button class="modal-cross" data-close="true">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal_body p-3">
+                    Login
+                </div>
+                <div class="modal_footer">
+                    <div class="buttons w-25">
+                        <button class="login_btn">Увійти</button>
+                        <button class="register_btn">Зареєструватися</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+
+    <script src="js/front-actions.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/sort.js"></script>
+    <script src="js/filter.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,332 @@
+*{
+    margin: 0;
+    padding: 0;
+    transition: 0.5s all ease;
+}
+a{
+    text-decoration: none;
+}
+
+.body_block {
+    overflow: hidden;
+}
+.overlay{
+    background-color: rgba(0, 0, 0, 0.7);
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    z-index: 9999;
+}
+.modal_window{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    border-radius: 10px;
+    z-index: 10000;
+}       
+
+/* .modal_window.modal-open{
+    display: flex;
+}
+.modal_window.modal-close{
+    display: none;
+} */
+
+#modal-product{
+    width: 70%;
+    max-width: 1000px;
+}
+
+.modal_header{
+    /* border: 1px solid yellow; */
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 3px solid orange;
+    border-radius: 5px 5px 0px 0px;
+}
+.modal_header>div{
+    display: flex;
+    align-items: center;
+}
+
+.modal_title{
+    /* border: 1px solid lime; */
+    font-family: "Bahnschrift";
+    padding-left: 10px;
+    padding-top: 8px;
+}
+.modal-cross{
+    font-size: 24pt;
+    display: flex;
+    background: none;
+    border: 0;
+}
+.modal-cross>span{
+    padding: 0px 16px 6px;
+    border: 2px solid transparent;
+}
+.modal-cross>span:hover{
+    cursor: pointer;
+    transform: rotate(90deg);
+    color: orange;
+    border: 2px solid orange;
+    transition: 0.5s all ease;
+    border-radius: 10px;
+}
+
+#form_item{
+    width: 100%;
+    border-collapse: collapse;
+}
+.modal_footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+    border-radius: 0px 0px 10px 10px;
+}
+.buttons{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+}
+#form_item td{
+    padding: 7px 0px;
+    text-align: center;
+    position: relative;
+}
+td{
+    width: 12.5%;
+}
+.char{
+    float: right;
+}
+label{
+    margin-right: 3px;
+    font-family: "Bahnschrift";
+}
+.measure{
+    float: left;
+}
+.first, input, select{
+    text-align: center;
+}
+select{
+    font-size: 11pt;
+    padding: 5px 0px;
+    width: 87%;
+    border-radius: 3px 3px 0px 0px;
+}
+.input_text{
+    width: 95%;
+    height: 30px;
+    font-size: 12pt;
+    border-radius: 3px 3px 0px 0px;
+}
+input[type=image]{
+    cursor: auto;
+}
+#discount-checkbox-toggle{
+    margin: 0px 5px;
+}
+
+label{
+    display: inline-flex;
+    align-items: center;
+}
+
+.image_lbl{
+    text-align: center;
+}
+.image{
+    box-sizing: border-box;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#image{
+    width: 100%;
+    height: 100%;
+}
+.file{
+    width: 100%;
+}
+.file-load-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 94%;
+    position: relative;
+    z-index: 0;
+}
+.file-load-block input[type=file] {
+	opacity: 0;
+	filter: alpha(opacity=0);
+	position: absolute;
+	height: 100%;
+    width: 100%;
+	font-size: 200pt;
+	z-index: 2;
+}
+.file-load-block input[type="file"]::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    cursor: pointer;
+}
+.file-load-block input[type=text] {
+    z-index: 3;
+    position: relative;
+    display: inline-block;
+    top: 0;
+    right: 0;
+    width: 65%;
+    padding: 0% 2%;
+    white-space: pre;
+    text-align: left;
+    border-radius: 0px 5px 5px 0px;
+}
+.file-load-block input[type=text]:focus{
+    outline: 0;
+}
+.fileLoad{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.file-load-block button{
+    position: relative;
+    display: inline-block;
+    left: 0;
+    top: 0;
+    width: 32%;
+    padding: 7px 5px 5px;
+    font-family: "Bahnschrift";
+    border-radius: 5px 0px 0px 5px;
+    z-index: 1;
+    font-size: 10pt;
+} 
+.toggle{
+    opacity: 0;
+    pointer-events: none;
+}
+.toggle-hide {
+    opacity: 0;
+    pointer-events: none;
+}
+.toggle-show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.input_text::placeholder{
+    opacity: 0.7;
+}
+input:focus, select:focus{
+    outline: 0;
+}
+select:hover{
+    cursor: pointer;
+}
+.input_text:focus, .input_text:focus::placeholder, select:focus{
+    transition: all 0.05s ease-in-out 0.1s;
+}
+.short{
+    width: 70%;
+}
+.long{
+    width: 85%;
+}
+#model{
+    width: 90%;
+}
+
+/* Color Styles */
+.modal_window, .modal-cross{
+    color: white;
+}
+.modal_header{
+    background-color: darkslategray;
+}
+.modal_window{
+    background-color:rgb(46, 46, 46);
+}
+.modal_body{
+    background-color: darkgoldenrod;
+}
+.modal_footer{
+    border-top: 3px solid orange;
+    background-color: darkslategray;
+}
+
+select{
+    border: none;
+    border-bottom: 2px solid gray;
+}
+.input_text{
+    border: none;
+    border-bottom: 2px solid gray;
+    background-color: rgb(255, 255, 255);
+}
+.image{
+    /* border: 1px solid purple; */
+    border: 1px solid darkslategray;
+    background-color: white;
+}
+.file-load-block input[type=text]{
+    border: none;
+    color: #000;
+}
+.file-load-block button{
+    /* background-color: rgb(39, 39, 39); */
+    background-color: darkslategray;
+    border: none;
+    color: white;
+}
+.input_text:not(:read-only):focus, select:focus{
+    /* border-bottom-color:rgb(255, 145, 0); */
+    /* border-bottom-color:purple; */
+    border-bottom-color:darkslategray;
+    box-shadow: 3px 2px 10px gray;
+}
+.input_text:focus::placeholder{
+    /* color:rgb(255, 145, 0); */
+    color: darkslategray;
+}
+
+/* Login styles */
+
+#modal-login{
+    width: 50%;
+}
+
+.btn_group{
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.btn{
+    padding: 0.5rem 0.75rem 0.35rem;
+/*     width: 100px; */
+    margin: 0;
+}

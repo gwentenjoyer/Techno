@@ -1,0 +1,62 @@
+*{
+    transition: 0.5s all ease;
+}
+body{
+    background-color: white;
+    color: white;
+}
+
+
+/* Header styles */
+
+.upper_header {
+    background-color: lavender;
+}
+
+.status{
+    color: black;
+}
+
+.header{
+    background-color: lightgrey;
+}
+
+.logo, .logo:hover {
+    color: black;
+}
+
+.login>button{
+    background-color: rgba(255, 255, 255, 0.5);
+    /* background-color: rgba(0, 0, 0, 0.2); */
+}
+
+.itembar{
+    background-color: khaki;
+}
+/*  */
+
+.line{
+    background-color: black;
+}
+
+.main{
+    background-color:lavender;
+}
+
+.offcanvas{
+    background-color: lavender;
+    color: black;
+}
+
+.offcanvas-header, .offcanvas-body{
+    color: black;
+}
+
+.btn-close{
+    background: url("../img/icons/cross.png") center/0.7em auto no-repeat;
+    /* transition: 0.5s background ease; */
+}
+
+footer{
+    color: black;
+}

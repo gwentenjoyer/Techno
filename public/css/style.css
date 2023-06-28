@@ -1,0 +1,397 @@
+/* Header styles */
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+/* .header .hidden {
+    top: -100px; 
+} */
+
+.header{
+    border-bottom: 3px solid orange;
+}
+
+header .header .elements>div, header .header .elements>a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    transition: 0.5s all ease;
+}
+
+header .header .elements>div:not(.login):hover, header .header .elements>a:hover{
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+    /* Elements styles */
+
+    .menu{
+        width: 80px;
+    }
+
+    a{
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: none;
+    }
+
+    #menu {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        align-content: space-around;
+    }
+      
+    .line {
+        position: relative;
+        width: 100%;
+        line-height: 3px;
+        height: 3px;
+        background-color: white;
+        border-radius: 3px;
+    }
+
+    .line-2{
+        width: 70%;
+    }
+
+    .line-3{
+        width: 40%;
+    }
+
+    /* .menu img {
+        transition: 1s all ease;
+    }
+    
+    .menu img.menu-closed {
+        transform: rotate(180deg);
+    }
+    
+    .menu img.menu-opened {
+        transform: rotate(0deg);
+    } */
+
+    img{
+        width: 100%;
+        height: auto;
+    }
+
+    .search{
+        border-radius: 5px;
+    }
+
+    .logo{
+        font-family: "Chakra Petch";
+    }
+    
+    .logo:hover{
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    
+    .profile{
+        height: 30px;
+    }
+    
+    .profile:hover{
+        background-color: orange;
+        border-radius: 5px;
+        /* transition: 0.1s all ease; */
+    }
+
+    .profile:hover .status{
+        color: black;
+    }
+    
+    #profile_icon{
+        width: 20px;
+        height: auto;
+    }
+    
+    figure{
+        gap: 10px;
+    }
+    
+    
+
+    /* END Elements */
+
+    /* Icons styles */
+
+    .icon_img{
+        width: 80px;
+    }
+
+    #search{
+        border: none;
+        width: 80%;
+        border-radius: 5px 0px 0px 5px;
+        font-family: 'Bitter', sans-serif;
+        display: flex;
+        align-items: center;
+        text-align: left;
+    }
+
+    #search_img{
+        width: 25px;
+    }
+
+    #search:focus{
+        outline: 0;
+    }
+
+    
+    input[type="search"]::-webkit-search-cancel-button {
+        appearance: none;
+        background: url("../img/icons/cross_orange.png") no-repeat;
+        background-size: 50%;
+        position: absolute;
+        top: 10px;
+        right: 0;
+        height: 40px;
+        width: 40px;
+        cursor: pointer;
+    }
+
+    .icon_search, #search{
+        height: 40px;
+    }
+
+    /* END Icons */
+
+/* END Header */
+
+
+/* Main styles */
+
+.small_font{
+    font-size: 85%;
+}
+
+.card{
+    background-color: lightgray;    
+    width: 16.5rem;
+    color: black;
+    border: 2px solid gray;
+    transform: scale(0.97);
+}
+
+.card>img{
+    /* border-radius: 5px; */
+    background-color: white;
+}
+
+.card:hover{
+    transform: scale(1);
+    box-shadow: 0px 0px 30px 5px rgb(36, 36, 36);
+}
+
+/* .card-content{
+    border-top: 1px dotted black;
+    border-bottom: 1px dotted black;
+} */
+
+.property-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-top: 1px dotted black;
+    border-bottom: 1px dotted black;
+    font-size: 12px;
+}
+
+.property-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* .property-name {
+    
+} */
+
+.property-value {
+    font-weight: bold;
+}
+
+/*  */
+
+.image_container{
+    position: relative;
+}
+
+.details, .discount, .product_id, .old_price, .current_price, .availability{
+    position: absolute;
+}
+
+.details{
+    width: 100%;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    color: black;
+    font-family: "Cambria";
+    font-style: italic;
+    font-weight: bold;
+}
+
+.discount{
+    background-color:red;
+    border-radius: 25%;
+    padding: 2px 10px;
+    color: white;
+    font-style: normal;
+    font-weight: 100;
+    top: 7px;
+    left: 7px;
+}
+
+.product_id{
+    font-size: 10pt;
+    font-style: italic;
+    top: 3px;
+    right: 5px;
+}
+
+.current_price{
+    left: 5px;
+    bottom: 3px;
+    font-size: 14pt;
+}
+
+.old_price{
+    left: 5px;
+    bottom: 25px;
+    font-size: 12pt;
+    color: gray;
+}
+
+.availability{
+    right: 5px;
+    bottom: 5px;
+    font-size: 11pt;
+}
+
+.available {
+    color: green;
+}
+
+.limited {
+    color: purple;
+}
+
+.unavailable {
+    color: red;
+}
+
+
+/*  */
+
+
+.offcanvas{
+    margin-top: 117px;
+    width: 330px;
+}
+
+.accordion{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.accordion-button.collapsed::after{
+    transform: rotate(-180deg);
+}
+
+.accordion-button:not(.collapsed)::after, .accordion-button::after{
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    transform: rotate(180deg);
+}
+
+.offcanvas.show {
+    transform: translateX(0);
+}
+
+.btn-close:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    transition: 0.5s all ease;
+}
+
+.sidebar-display{
+    display: none;
+}
+
+/* #sidebar {
+    position: absolute;
+}
+
+.sidebar-hidden{
+    display: none;
+    left: -350px;
+    transition: 0.5s all ease;
+}
+  
+.sidebar-expanded {
+    position: relative;
+    left: 0;
+}  */
+
+/* END Main */
+
+
+/* Footer styles */
+.items_header{
+    border-bottom: 3px solid orange;
+}
+.sort{
+    padding: 10px 3% 10px 0px;
+    max-height: 100%;
+    font-size: 11pt;
+}
+
+/* .form-check-input[type=checkbox]{
+    border: 2px solid darkgray;
+} */
+
+.accordion-button:focus, .btn:focus{
+    outline: 0;
+    box-shadow: 0 0 0 0 transparent;
+    border-color: transparent;
+}
+.dropdown-item:hover{
+    background-color: orange;
+}
+.accordion-button:not(.collapsed), .collapsed{
+    color: black;
+    border-bottom: 1px solid gray;
+    background-color: orange;
+}
+.accordion-item{
+    border: 0;
+}
+.last{
+    color: white;
+}
+
+
+/* END Footer */

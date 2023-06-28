@@ -1,0 +1,67 @@
+*{
+    transition: 0.5s all ease;
+}
+body{
+    background-color: black;
+}
+
+
+/* Header styles */
+
+.upper_header {
+    background-color: rgb(33, 37, 41);
+}
+
+.status{
+    color: white;
+}
+
+.header {
+    background-color: darkslategray;
+}
+
+.logo, .logo:hover {
+    color: white;
+}
+
+.login>button{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.itembar{
+    background-color: darkgoldenrod;
+}
+
+.items_header{
+    background-color: orange;
+}
+/*  */
+
+.offcanvas{
+    /* background-color: darkcyan; */
+    background-color: rgb(33, 37, 41);
+}
+
+.offcanvas-header, .offcanvas-body{
+    color: white;
+}
+
+.btn-close{
+    background: url("../img/icons/cross_light.png") center/0.7em auto no-repeat;
+    /* transition: 0.5s background ease; */
+}
+.btn-close:hover{
+    background-color: rgba(255, 255, 255, 0.102);
+}
+
+.line{
+    background-color: white;
+}
+
+.main{
+    background-color:rgb(28, 28, 28);
+}
+
+footer{
+    color: white;
+}

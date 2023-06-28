@@ -1,0 +1,87 @@
+.edit_btn, .delete_btn, .add_btn, .register_btn{
+    margin: 0 auto;
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    /* font-family: 'Bitter', sans-serif; */
+    background-color: lightgray;
+}
+.edit_btn{
+    border: 2px solid purple;
+    color: purple;
+}
+.edit_btn:hover,.delete_btn:hover, .add_btn:hover, .register_btn:hover{
+    transition: all .2s ease-out .05s;
+    cursor: pointer;
+}
+.edit_btn:hover{
+    color: white;
+    background-color:darkmagenta;
+    border-color:indigo;
+    box-shadow: 0px 0px 30px 2px purple;
+}
+.delete_btn, .register_btn{
+    border: 2px solid red;
+    color: red;
+}
+.delete_btn:hover, .register_btn:hover{
+    color: white;
+    background-color:red;
+    border-color: maroon;
+    box-shadow: 0px 0px 30px 2px red;
+}
+
+.add_btn{
+    border: 2px solid lime;
+    color: forestgreen;
+}
+.add_btn:hover{
+    color: white;
+    background-color:rgb(0, 225, 0);
+    border-color:forestgreen;
+    box-shadow: 0px 0px 30px 2px limegreen;
+}
+
+button{
+    font-size: 12pt;
+}
+.find_btn{
+    height: 100%;
+}
+.icon_search, .icon_search>.find_btn{
+    border-radius: 0px 5px 5px 0px;
+}
+.icon_search>.find_btn{
+    background-color: rgb(255, 166, 0);
+    border: none;
+}
+.icon_search>.find_btn:hover{
+    box-shadow: 8px 7px 17px black;
+    transition: 0.5s all ease;
+}
+
+.create_btn, .login_btn, .register_btn{
+    height: 40px;
+    padding: 0 24px;
+    background: none;
+
+    border-radius: 5px;
+    
+}
+
+.create_btn, .login_btn{
+    border: 2px solid orange;
+    color: orange;
+}
+
+.register_btn{
+    border: 2px solid red;
+    color: red;
+}
+
+.create_btn:hover, .login_btn:hover{
+    background-color: orange;
+    color: black;
+    transition: 0.5s all ease;
+    box-shadow: 0px 0px 30px 2px orangered;
+}
