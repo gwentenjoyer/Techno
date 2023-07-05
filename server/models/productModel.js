@@ -11,8 +11,8 @@ const productModelSchema = new Schema ({
     fan: {type: Number, required: true},
     efficiency: {type: Number, required: true},
     availability: {type: String, required: true},
-    price: {type: String, required: true},
-    discount: {type: String},
+    price: {type: Number, required: true},
+    discount: {type: Number},
     cloudinaryPublicUrl: {type: String, required: true}
 }, {timestamps: true});
 

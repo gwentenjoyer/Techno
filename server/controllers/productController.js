@@ -57,21 +57,16 @@ router.put('/update/:id', upload.single("file"), async (req, res) => {
         } else {
             /* console.log("old image"); */
         }
-
         try {
             const result = await Product.findByIdAndUpdate(productId, obj);
-            /* console.log(result); */
             return res.sendStatus(200);
         } catch (err) {
             console.error(err);
         }
-
     } else {
         console.log("obj is empty...");
         res.sendStatus(404).send(error);
     }
-
-    
 })
 
 router.get('/list', async (req, res) => {
@@ -113,6 +108,46 @@ router.get('/single/:id', async (req, res) => {
         res.status(500).send("Internal server error");
     }
 });
+
+router.post('/search', async (req, res) => {
+    const searchQuery = req.body.searchQuery;
+    console.log(searchQuery);
+    const regex = new RegExp(searchQuery, 'i');
+    try {
+        let query;
+        if (!isNaN(parseFloat(searchQuery))) {
+            console.log(`Value ${searchQuery} is a number`);
+            const numQuery = parseFloat(searchQuery);
+            query = {
+                $or: [
+                    { power: numQuery },
+                    { fan: numQuery },
+                    { efficiency: numQuery },
+                    { price: numQuery },
+                    { discount: numQuery },
+                ]
+            };
+        }
+        else {
+            console.log(`Value ${searchQuery} is a string`);
+            query = {
+                $or: [
+                    { product: { $regex: regex } },
+                    { producer: { $regex: regex } },
+                    { model: { $regex: regex } },
+                    { cables: { $regex: regex } },
+                    { availability: { $regex: regex } },
+                ]
+            };
+            
+        }
+        const products = await Product.find(query).exec();
+        res.send(products);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Внутрішня помилка сервера');
+    }
+})
 
 function getImgIdFromCloudinary(path){
     const pattern = new RegExp(`${cloudinary.folder}/[a-zA-Z_0-9]+`);

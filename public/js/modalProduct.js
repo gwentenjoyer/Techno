@@ -130,23 +130,64 @@ discountToggle.addEventListener("change", function() {
 
 
 let addBtn = document.querySelector(".add_btn");
-addBtn.addEventListener("click", function() {
+addBtn.addEventListener("click", async function() {
     const formData = new FormData(document.querySelector("#product-form"));
+    /* isValidProduct(formData); */
     /* console.log(...formData); */
-    fetch ('/products/add', {
-        method: 'POST',
-        body: formData
-    }).then((res) => {
-        if (res.ok) {
+    if (!isValidProduct(formData))
+        alert("Дані продукту не є коректними. Заповніть всі поля та перевірте їх значення");
+    else {
+        const result = await fetch ('/products/add', {
+            method: 'POST',
+            body: formData
+        })
+        if (result.ok) {
             /* console.log("Successfully written."); */
             refreshProducts();
-        }
-        else {
+        } else {
             console.log("something went wrong while sending add_new data...");
         }
-    })
-    hideModal();  
+        hideModal();  
+    }
 });
+
+function isValidProduct(formData) {
+    const requiredFields = ['producer', 'model', 'power', 'fan', 'efficiency', 'price'];
+    for (const field of requiredFields) {
+        const value = formData.get(field);
+        if (value.trim() === '')
+            return false;
+    }
+
+    const producer = formData.get('producer');
+    const model = formData.get('model');
+    const power = formData.get('power');
+    const fan = formData.get('fan');
+    const efficiency = formData.get('efficiency');
+    const price = formData.get('price');
+    const discount = formData.get('discount');
+    const file = formData.get('file');
+
+    const brandOptions = document.querySelectorAll('#brand option');
+    const validProducers = [...brandOptions].map(option => option.value);
+    const isProducerValid = validProducers.includes(producer);
+    /* console.log(isProducerValid); */
+
+    const modelRegex = /^[a-zA-Z0-9\-]+$/;
+    const isModelValid = modelRegex.test(model);
+    /* console.log(isModelValid); */
+    const isPowerValid = /^\d+$/.test(power) && Number(power) > 0 && Number(power) <= 3000;
+    const fanDiameters = [90, 100, 110, 120, 130, 140];
+    const isFanValid = /^\d+$/.test(fan) && Number(fan) > 0 && fanDiameters.includes(Number(fan));
+    const isEfficiencyValid = /^\d+$/.test(efficiency) && Number(efficiency) > 0 && Number(efficiency) <= 100;
+    const isPriceValid = /^\d+$/.test(price) && Number(price) > 0;
+    const isDiscountValid = /^\d+$/.test(discount) && Number(discount) >= 0 && Number(discount) <= 50;
+    /* console.log(isDiscountValid); */
+    const isImageValid = file && file.type.includes('image/') && file.width === file.height;
+    /* console.log(isSquareImage); */
+    if (isProducerValid && isModelValid && isPowerValid && isFanValid && isEfficiencyValid && isPriceValid && isDiscountValid && isImageValid)
+        return true;
+}
 
 async function refreshProducts() {
     const receivedData = await fetch('/products/list', { method: 'GET' })
@@ -358,27 +399,3 @@ fileInput.addEventListener("change", showPrewImg);
 /* END */
 
 
-/* Add new product into Local Storage */
-
-/* function editElementInLS(id) {
-    let product = JSON.parse(localStorage.getItem(id));
-
-    product.brand = document.querySelector("#producer").value;
-    product.model = document.querySelector("#model").value;
-    product.power = document.querySelector("#power").value;  
-    if (fileInput.value)
-        product.pictname = fileInput.value.replace(/C:\\fakepath\\/, '');
-    product.cables = document.querySelector("#cables").value;  
-    product.fan = document.querySelector("#fan").value;  
-    product.efficiency = document.querySelector("#efficiency").value;  
-    product.availability = document.querySelector("#availability").value;  
-    product.price = document.querySelector("#price").value; 
-    product.discount = document.querySelector("#discount").value;
-
-    let rowSt = JSON.stringify(product);
-    localStorage.setItem(`${id}`, rowSt);
-    hideModal();
-    setTimeout(refreshProducts(), 1000);
-} */
-
-/* END */
