@@ -386,21 +386,14 @@ let imagePath = document.querySelector("#image_path");
 fileInput.onchange = evt => {
     const [file] = fileInput.files;
     if (file) {
-      prodImage.src = URL.createObjectURL(file);
-    }
-}
-
-/* function showPrewImg(){
-    if (fileInput.files.length > 0){
-        let filename = fileInput.value.replace(/C:\\fakepath\\/, '');
-        prodImage.setAttribute("src", `${filename}`);
+        prodImage.src = URL.createObjectURL(file);
+        const filename = fileInput.value.replace(/C:\\fakepath\\/, '');
         imagePath.value = `C:/fakepath/${filename}`;
     } else {
-        prodImage.setAttribute("src", "");
+        prodImage.src = "";
         imagePath.value = "Файл не вибрано";
     }
 }
-fileInput.addEventListener("change", showPrewImg); */
 
 
 /* END */
