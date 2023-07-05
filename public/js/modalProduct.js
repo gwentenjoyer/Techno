@@ -183,7 +183,7 @@ function isValidProduct(formData) {
     const isPriceValid = /^\d+$/.test(price) && Number(price) > 0;
     const isDiscountValid = /^\d+$/.test(discount) && Number(discount) >= 0 && Number(discount) <= 50;
     /* console.log(isDiscountValid); */
-    const isImageValid = file && file.type.includes('image/') && file.width === file.height;
+    const isImageValid = file && file.type.includes('image/');
     /* console.log(isSquareImage); */
     if (isProducerValid && isModelValid && isPowerValid && isFanValid && isEfficiencyValid && isPriceValid && isDiscountValid && isImageValid)
         return true;
@@ -383,19 +383,24 @@ let fileInput = document.querySelector("#file");
 let prodImage = document.querySelector("#image");
 let imagePath = document.querySelector("#image_path");
 
-function showPrewImg(){
+fileInput.onchange = evt => {
+    const [file] = fileInput.files;
+    if (file) {
+      prodImage.src = URL.createObjectURL(file);
+    }
+}
+
+/* function showPrewImg(){
     if (fileInput.files.length > 0){
-        let filename = fileInput.value.replace(/C:\\fakepath\\/, ''); // Обрізаємо C:\fakepath\
-        prodImage.setAttribute("src", `img/${filename}`);
+        let filename = fileInput.value.replace(/C:\\fakepath\\/, '');
+        prodImage.setAttribute("src", `${filename}`);
         imagePath.value = `C:/fakepath/${filename}`;
     } else {
         prodImage.setAttribute("src", "");
         imagePath.value = "Файл не вибрано";
     }
 }
-fileInput.addEventListener("change", showPrewImg);
+fileInput.addEventListener("change", showPrewImg); */
 
 
 /* END */
-
-

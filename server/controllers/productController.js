@@ -12,17 +12,16 @@ const upload = multer({ dest: 'uploads/' });
 router.post('/add', upload.single("file"), async (req, res) => {
     let obj = req.body;
     let img = req.file;
-
-    console.log(obj);
-    console.log(img);
-    
+    /* console.log(obj);
+    console.log(img); */
     if (obj) {
         const imgSecureUrl = await cloudinary.uploadImage(img.path);
         fs.unlink(img.path, (err) => {
             if (err)
                 console.error(err);
-            else
-                console.log("Image was successfully deleted");
+            else {
+                /* console.log("Image was successfully deleted"); */
+            }
         })
         let productData = new Product(obj);
         productData.cloudinaryPublicUrl = imgSecureUrl;

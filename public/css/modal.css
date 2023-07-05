@@ -135,9 +135,7 @@ select{
     font-size: 12pt;
     border-radius: 3px 3px 0px 0px;
 }
-input[type=image]{
-    cursor: auto;
-}
+
 #discount-checkbox-toggle{
     margin: 0px 5px;
 }
