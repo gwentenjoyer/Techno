@@ -24,6 +24,7 @@ a{
     z-index: 9999;
 }
 .modal_window{
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
@@ -43,6 +44,8 @@ a{
 #modal-product{
     width: 70%;
     max-width: 1000px;
+    min-width: 725px;
+    scroll-behavior: auto;
 }
 
 .modal_header{
@@ -83,7 +86,7 @@ a{
     border-radius: 10px;
 }
 
-#form_item{
+#product-table{
     width: 100%;
     border-collapse: collapse;
 }
@@ -99,7 +102,7 @@ a{
     gap: 5px;
     justify-content: center;
 }
-#form_item td{
+#product-table td{
     padding: 7px 0px;
     text-align: center;
     position: relative;
@@ -317,6 +320,53 @@ select{
 
 #modal-login{
     width: 50%;
+    min-width: 600px;
+}
+
+#modal-login tr{
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-evenly;
+}
+
+.modal-content{
+    height: 100%;
+}
+
+#login-form{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#modal-login td{
+    padding: 10px 0px;
+}
+
+#modal-login > .modal_body{
+    height: 250px;
+}
+
+.login-label{
+    text-align: right;
+}
+
+.width3-4{
+    width: 65%;
+}
+
+.width1-4{
+    width: 30%;
+    margin-right: 5px;
+    text-align: right;
+}
+
+.login-input{
+    width: 100%;
+    text-align: left;
+    display: inline-block;
+    padding: 15px;
 }
 
 .btn_group{

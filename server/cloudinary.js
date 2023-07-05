@@ -1,4 +1,5 @@
 const cloudinary = require("cloudinary").v2;
+require('dotenv/config');
 
 cloudinary.config({ 
     cloud_name: process.env.CLOUD_NAME,
@@ -7,16 +8,19 @@ cloudinary.config({
     secure: true,
 });
 
+const FOLDER = "techno/images"
+
 const options = {
     use_filename: true,
     overwrite: true,
-    folder: "techno/images"
+    folder: FOLDER
 }
 
 const uploadImage = async (imagePath) => {
     try{
         const result = await cloudinary.uploader.upload(imagePath, options);
-        console.log(result.secure_url); 
+        /* console.log(result.secure_url);  */
+        return result.secure_url;
     } catch (err) {
         console.error(err);
     }
@@ -25,7 +29,8 @@ const uploadImage = async (imagePath) => {
 const destroyImage = async (imagePath) => {
     try {
         const result = await cloudinary.uploader.destroy(imagePath);
-        console.log(result);
+        /* console.log(result); */
+        return result;
     } catch (err) {
         console.error(err);
     }
@@ -33,5 +38,6 @@ const destroyImage = async (imagePath) => {
 
 module.exports = {
     uploadImage: uploadImage,
-    destroyImage: destroyImage
+    destroyImage: destroyImage,
+    folder: FOLDER
 }

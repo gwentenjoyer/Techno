@@ -78,7 +78,7 @@ function fillOptions(options, accordion_body) {
 }
  */
 
-function getBrands() {
+/* function getBrands() {
     const brands = [...new Set(Object.values(localStorage).map(item => JSON.parse(item).brand).sort())];
     const uniqueBrands = brands.map(brand => {
         return {
@@ -88,24 +88,37 @@ function getBrands() {
         };
     });
     return uniqueBrands;
+} */
+
+
+async function getBrandsFromDB() {
+    try {
+        const response = await fetch('/products/brands', { method: "GET" });
+        const brands = await response.json();
+        return brands;
+    } catch (err) {
+        console.error(err);
+    }
 }
 
-const brands = getBrands();
-/* console.log(brands); */
-fillOptions(brands, brandPanelBody);
+async function displayBrands() {
+    const brands = await getBrandsFromDB();
+    fillOptions(brands, brandPanelBody);
+}
 
+displayBrands();
 fillOptions(powers, powerPanelBody);
 fillOptions(cablesConnections, cablesPanelBody);
 fillOptions(fanDiameters, fanPanelBody);
 
-function refreshBrands() {
+/* function refreshBrands() {
     const brandPanelBody = document.querySelector("#panelsStayOpen-collapseOne > .accordion-body");
-    const brands = getBrands();
+    const brands = getBrandsFromDB();
     fillOptions(brands, brandPanelBody);
-}
+} */
 
 
-addBtn.addEventListener("click", refreshBrands);
+/* addBtn.addEventListener("click", refreshBrands);
 
 let editBtn = document.querySelector(".modal_footer>.buttons>.edit_btn");
 editBtn.addEventListener("click",function(){
@@ -116,7 +129,7 @@ editBtn.addEventListener("click",function(){
 let deleteBtn = document.querySelectorAll(".card .delete_btn");
 deleteBtn.forEach(function(btn) {
     btn.addEventListener("click", refreshBrands);
-});
+}); */
 
 let selectedFilters = [];
 

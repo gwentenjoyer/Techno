@@ -1,26 +1,21 @@
 const express = require("express");
 const path = require("path");
-require("dotenv");
+const productController = require("./controllers/productController");
+require("dotenv/config");
 
-require('./db.js') ;
+require("./db");
 
 // express app
 const app = express();
 
-// app get methods
-app.get("/", (req, res) => {
-    /* res.sendFile("index.html", { root: path.join(__dirname, "../public") }); */
-    res.render("main");
-});
+app.use(express.json());
+app.use(express.static(path.join(__dirname, "../public")));
 
-
-const productController = require("./controllers/productController")
-app.use("/product", productController);
-
+app.use("/products", productController);
 
 // app listen
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 app.listen(port, () => {
-    console.log(`Server is running at: http://127.0.0.1:${port}`);
+  console.log(`Server is running at: http://127.0.0.1:${port}`);
 });

@@ -4,16 +4,18 @@
   "description": "a simple site for selling power supplies for PC",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "devstart": "nodemon ./server/index.js"
   },
   "author": "dekron",
   "license": "ISC",
   "dependencies": {
     "cloudinary": "^1.37.3",
     "dotenv": "^16.3.1",
+    "esm": "^3.2.25",
     "express": "^4.18.2",
-    "formidable": "^3.4.0",
+    "formidable": "^3.5.0",
     "mongoose": "^7.3.1",
-    "nodemon": "^2.0.22"
+    "multer": "^1.4.5-lts.1"
   }
 }

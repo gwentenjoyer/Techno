@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 require('dotenv/config');
-require('./models/productModel');
+require('../server/models/productModel');
 
 mongoose.connect(
     process.env.DB_CONNECTION,
