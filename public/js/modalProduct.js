@@ -165,8 +165,11 @@ function isValidProduct(formData) {
     const fan = formData.get('fan');
     const efficiency = formData.get('efficiency');
     const price = formData.get('price');
-    const discount = formData.get('discount');
+    let discount = formData.get('discount');
     const file = formData.get('file');
+
+    if (discount === '')
+        discount = 0;
 
     const brandOptions = document.querySelectorAll('#brand option');
     const validProducers = [...brandOptions].map(option => option.value);

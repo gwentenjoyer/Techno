@@ -178,4 +178,39 @@ router.get("/brands", async (req, res) => {
     }
 })
 
+
+router.get("/sort/:id", async (req, res) => {
+    const sortId = req.params.id;
+    console.log(sortId);
+    try {
+        let products;
+        switch (sortId) {
+            case "new_products":
+                products = await Product.find().sort({ createdAt: -1 }).exec();
+                break;
+            case "expensive_products":
+                products = await Product.find().sort({ price: -1 }).exec();
+                break;
+            case "cheap_products":
+                products = await Product.find().sort({ price: 1 }).exec();
+                break;
+            case "more_powerful":
+                products = await Product.find().sort({ power: -1 }).exec();
+                break;
+            case "less_powerful":
+                products = await Product.find().sort({ power: 1 }).exec();
+                break;
+            case "promotional_products":
+                products = await Product.find().sort({ discount: -1 }).exec();
+                break;
+        }
+        res.send(products);
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Внутрішня помилка сервера');
+    }
+
+})
+
+
 module.exports = router;
