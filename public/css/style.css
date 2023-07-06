@@ -389,6 +389,23 @@ header .header .elements>div:not(.login):hover, header .header .elements>a:hover
 .accordion-item{
     border: 0;
 }
+
+
+.accordion-price tr td{
+    /* border: 1px solid red; */
+    padding: 5px 0px;
+    text-align: center;
+}
+.accordion-price tr td:first-child{
+    text-align: right;
+}
+.accordion-price tr td:nth-child(2){
+    width: 80%;
+}
+
+.accordion-input{
+    width: 90%;
+}
 .last{
     color: white;
 }

@@ -167,11 +167,46 @@
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingFive">
                                         <button class="accordion-button collapsed show" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="true" aria-controls="panelsStayOpen-collapseFive">
-                                        Наявність
+                                        Ефективність
                                         </button>
                                     </h2>
                                     <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingFive">
                                         <div class="accordion-body"></div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+                                        <button class="accordion-button collapsed show" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="true" aria-controls="panelsStayOpen-collapseSix">
+                                        Наявність
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingSix">
+                                        <div class="accordion-body"></div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+                                        <button class="accordion-button collapsed show" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="true" aria-controls="panelsStayOpen-collapseSeven">
+                                        Ціна
+                                        </button>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingSeven">
+                                        <div class="accordion-body">
+                                            <table class="accordion-price">
+                                                <tr>
+                                                    <td><label for="min-price" class="text-dark">Від:</label></td>
+                                                    <td><input type="number" id="min-price" name="min-price" class="no-arrows accordion-input" placeholder="3000"></td>
+                                                    <td><label for="min-price" class="text-dark">грн</label></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><label for="max-price" class="text-dark">До:</label></td>
+                                                    <td><input type="number" id="max-price" name="max-price" class="no-arrows accordion-input" placeholder="10000"></td>
+                                                    <td><label for="max-price" class="text-dark">грн</label></td>
+                                                </tr>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                                 
@@ -308,7 +343,17 @@
                     </tr>
                     <tr>
                         <td colspan="2"><label for="fan" class="char">Діаметр вентилятора:</label></td>
-                        <td><input type="number" name="fan" id="fan" class="short input_text no-arrows" placeholder="120"></td>
+                        <td>
+                            <input type="number" list="fan-diameters" name="fan" id="fan" class="short input_text no-arrows" placeholder="120">
+                            <datalist id="fan-diameters">
+                                <option>90</option>
+                                <option>100</option>
+                                <option>110</option>
+                                <option>120</option>
+                                <option>130</option>
+                                <option>140</option>
+                            </datalist>
+                        </td>
                         <td><label for="fan" class="measure">мм</label></td>
                     </tr>
                     <tr>
@@ -418,9 +463,9 @@
     
 
     <script src="js/front-actions.js"></script>
+    <script src="js/filter.js"></script>
     <script src="js/modalProduct.js"></script>
     <script src="js/sort.js"></script>
-    <script src="js/filter.js"></script>
     <script src="js/search.js"></script>
     
 </body>

@@ -178,7 +178,6 @@ router.get("/brands", async (req, res) => {
     }
 })
 
-
 router.get("/sort/:id", async (req, res) => {
     const sortId = req.params.id;
     console.log(sortId);
@@ -211,6 +210,17 @@ router.get("/sort/:id", async (req, res) => {
     }
 
 })
+
+/* router.post('/filter', async (req, res) => {
+    try {
+        const filterParams = req.body;
+        const filteredProducts = await Product.find(filterParams).exec();
+        res.json(filteredProducts);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal Server Error');
+    }
+}); */
 
 
 module.exports = router;

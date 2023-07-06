@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const productController = require("./controllers/productController");
+const filterController = require("./controllers/filterProductController");
 require("dotenv/config");
 
 require("./db");
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.use("/products", productController);
+app.use("/products/filter", filterController);
 
 // app listen
 const port = process.env.PORT || 5000;

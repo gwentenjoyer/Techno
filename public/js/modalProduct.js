@@ -134,7 +134,7 @@ addBtn.addEventListener("click", async function() {
     const formData = new FormData(document.querySelector("#product-form"));
     /* isValidProduct(formData); */
     /* console.log(...formData); */
-    if (!isValidProduct(formData))
+    if (!isValidProduct(formData) || !isValidImage(formData))
         alert("Дані продукту не є коректними. Заповніть всі поля та перевірте їх значення");
     else {
         const result = await fetch ('/products/add', {
@@ -144,6 +144,7 @@ addBtn.addEventListener("click", async function() {
         if (result.ok) {
             /* console.log("Successfully written."); */
             refreshProducts();
+            displayBrands();
         } else {
             console.log("something went wrong while sending add_new data...");
         }
@@ -155,8 +156,9 @@ function isValidProduct(formData) {
     const requiredFields = ['producer', 'model', 'power', 'fan', 'efficiency', 'price'];
     for (const field of requiredFields) {
         const value = formData.get(field);
-        if (value.trim() === '')
+        if (value.trim() === '') {
             return false;
+        }
     }
 
     const producer = formData.get('producer');
@@ -166,31 +168,43 @@ function isValidProduct(formData) {
     const efficiency = formData.get('efficiency');
     const price = formData.get('price');
     let discount = formData.get('discount');
-    const file = formData.get('file');
 
-    if (discount === '')
+    if (discount === '') {
         discount = 0;
+    }
 
     const brandOptions = document.querySelectorAll('#brand option');
     const validProducers = [...brandOptions].map(option => option.value);
     const isProducerValid = validProducers.includes(producer);
-    /* console.log(isProducerValid); */
 
     const modelRegex = /^[a-zA-Z0-9\-]+$/;
     const isModelValid = modelRegex.test(model);
-    /* console.log(isModelValid); */
+
     const isPowerValid = /^\d+$/.test(power) && Number(power) > 0 && Number(power) <= 3000;
-    const fanDiameters = [90, 100, 110, 120, 130, 140];
-    const isFanValid = /^\d+$/.test(fan) && Number(fan) > 0 && fanDiameters.includes(Number(fan));
+
+    const fanOptions = document.querySelectorAll('#fan-diameters option');
+    const validFanDiameters = [...fanOptions].map(option => option.value);
+    const isFanValid = /^\d+$/.test(fan.toString()) && Number(fan) > 0 && validFanDiameters.includes(fan.toString());
+
     const isEfficiencyValid = /^\d+$/.test(efficiency) && Number(efficiency) > 0 && Number(efficiency) <= 100;
+
     const isPriceValid = /^\d+$/.test(price) && Number(price) > 0;
+
     const isDiscountValid = /^\d+$/.test(discount) && Number(discount) >= 0 && Number(discount) <= 50;
-    /* console.log(isDiscountValid); */
-    const isImageValid = file && file.type.includes('image/');
-    /* console.log(isSquareImage); */
-    if (isProducerValid && isModelValid && isPowerValid && isFanValid && isEfficiencyValid && isPriceValid && isDiscountValid && isImageValid)
+    
+    if (isProducerValid && isModelValid && isPowerValid && isFanValid && isEfficiencyValid && isPriceValid && isDiscountValid)
         return true;
+    return false;
 }
+
+function isValidImage(formData) {
+    const file = formData.get('file');
+    const isImageValid = file && file.type.includes('image/');
+    if (isImageValid)
+        return true;
+    return false;
+}
+
 
 async function refreshProducts() {
     const receivedData = await fetch('/products/list', { method: 'GET' })
@@ -338,7 +352,6 @@ async function grabSingleProduct(id) {
     });
     if (result) {
         const product = await result.json();
-        // Обробка отриманого продукту
         return product;
     } else {
         console.log("Something went wrong while grabbing a single product...");
@@ -347,16 +360,21 @@ async function grabSingleProduct(id) {
 
 async function updateElementInDB(id) {
     const formData = new FormData(document.querySelector("#product-form"));
-    const result = await fetch(`/products/update/${id}`, {
-        method: "PUT",
-        body: formData
-    })
-    if (result.ok) {
-        /* console.log("product was successfully updated"); */
-        refreshProducts();
-        hideModal();
-    } else {
-        console.log("something went wrong while updating the product...");
+    if (!isValidProduct(formData))
+        alert("Дані продукту не є коректними. Заповніть всі поля та перевірте їх значення");
+    else {
+        const result = await fetch(`/products/update/${id}`, {
+            method: "PUT",
+            body: formData
+        })
+        if (result.ok) {
+            /* console.log("product was successfully updated"); */
+            refreshProducts();
+            displayBrands();
+            hideModal();
+        } else {
+            console.log("something went wrong while updating the product...");
+        }
     }
 }
             
@@ -372,6 +390,7 @@ async function removeElementFromDB(id) {
     if (result.ok) {
         /* console.log("product was successfully deleted"); */
         refreshProducts();
+        displayBrands();
     } else 
         console.log("something went wrong while deleting the product...");
 }
