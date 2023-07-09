@@ -1,3 +1,5 @@
+console.log("filter.js");
+
 const powers = [
     {id:"less450Vt", title:"Менше 450 Вт", 'data-min-power':0, 'data-max-power':450},
     {id:"between450n550Vt", title:"450 Вт - 550 Вт", 'data-min-power':450, 'data-max-power':550},
@@ -336,64 +338,6 @@ function getSelectedAvailabilities() {
 
 //Фільтрування ціни
 
-const priceInputs = document.querySelectorAll('input[type="number"][name="availability"]');
-/* availabilityCheckboxes.forEach(checkbox => {
-    checkbox.addEventListener("change", async () => {
-        const selectedAvailabilities = getSelectedAvailabilities();
-        try {
-            const result = await fetch("/products/filter/availability", {
-                method: "POST",
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(selectedAvailabilities)
-            })
-            if (result.ok) {
-                const products = await result.json();
-                displayProducts(products);
-            } else {
-                console.log("something went wrong...");
-            }
-        } catch (err) {
-            console.error(err);
-        }
-    })
-}) */
-/* const minPriceInput = document.querySelector('#min-price');
-const maxPriceInput = document.querySelector('#max-price');
-
-minPriceInput.addEventListener('input', fetchFilterPrice);
-maxPriceInput.addEventListener('input', fetchFilterPrice);
-
-async function fetchFilterPrice() {
-    try {
-        const minPrice = parseInt(minPriceInput.value);
-        const maxPrice = parseInt(maxPriceInput.value);
-
-        let priceRange;
-        if (!isNaN(minPrice) && !isNaN(maxPrice)) {
-            priceRange = {
-                minPrice,
-                maxPrice
-            };
-        }
-        console.log(priceRange);
-        const result = await fetch("/products/filter/price", {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(priceRange)
-        });
-        if (result.ok) {
-            const products = await response.json();
-            console.log(products);
-        } else {
-            console.log('Something went wrong...');
-        }
-    } catch (err) {
-        console.error(err);
-    }
-} */
-
 const minPriceInput = document.getElementById('min-price');
 const maxPriceInput = document.getElementById('max-price');
 
@@ -403,17 +347,13 @@ maxPriceInput.addEventListener('input', fetchProductsByPrice);
 function fetchProductsByPrice() {
   const minPrice = parseInt(minPriceInput.value);
   const maxPrice = parseInt(maxPriceInput.value);
-
   let priceRange = {};
-
   if (!isNaN(minPrice) && minPrice > 0) {
     priceRange.minPrice = minPrice;
   }
-
   if (!isNaN(maxPrice) && maxPrice > 0) {
     priceRange.maxPrice = maxPrice;
   }
-
   sendPriceRangeToServer(priceRange);
 }
 
@@ -426,7 +366,6 @@ async function sendPriceRangeToServer(priceRange) {
             },
             body: JSON.stringify(priceRange)
         });
-
         if (response.ok) {
             const products = await response.json();
             displayProducts(products);
@@ -437,16 +376,3 @@ async function sendPriceRangeToServer(priceRange) {
             console.error(error);
     }
 }
-
-
-/* function getSelectedPrices() {
-    const selectedPrices = [];
-    efficiencyCheckboxes.forEach(checkbox => {
-        if (checkbox.checked) {
-            const minEff = parseFloat(checkbox.dataset.minEff);
-            const maxEff = parseFloat(checkbox.dataset.maxEff);
-            selectedEfficiencies.push({ minEff, maxEff });
-        }
-    });
-    return selectedEfficiencies;
-} */

@@ -5,7 +5,6 @@ const fs = require("fs");
 const Product = require("../models/productModel");
 const cloudinary = require("../cloudinary");
 const { log, error } = require("console");
-require("dotenv/config");
 
 const upload = multer({ dest: 'uploads/' });
 
@@ -110,15 +109,14 @@ router.get('/single/:id', async (req, res) => {
 
 router.post('/search', async (req, res) => {
     const searchQuery = req.body.searchQuery;
-    console.log(searchQuery);
     const regex = new RegExp(searchQuery, 'i');
     try {
         let query;
         if (!isNaN(parseFloat(searchQuery))) {
-            console.log(`Value ${searchQuery} is a number`);
             const numQuery = parseFloat(searchQuery);
             query = {
                 $or: [
+                    { producer: { $regex: regex } },
                     { power: numQuery },
                     { fan: numQuery },
                     { efficiency: numQuery },
@@ -128,7 +126,6 @@ router.post('/search', async (req, res) => {
             };
         }
         else {
-            console.log(`Value ${searchQuery} is a string`);
             query = {
                 $or: [
                     { product: { $regex: regex } },
@@ -138,7 +135,6 @@ router.post('/search', async (req, res) => {
                     { availability: { $regex: regex } },
                 ]
             };
-            
         }
         const products = await Product.find(query).exec();
         res.send(products);
@@ -147,19 +143,6 @@ router.post('/search', async (req, res) => {
         res.status(500).send('Внутрішня помилка сервера');
     }
 })
-
-function getImgIdFromCloudinary(path){
-    const pattern = new RegExp(`${cloudinary.folder}/[a-zA-Z_0-9]+`);
-    const execRes = pattern.exec(path);
-    let imgId;
-    if (execRes){
-        imgId = execRes[0];
-        return imgId;
-    }
-    else{
-        throw "can't extract id from path";
-    }
-}
 
 router.get("/brands", async (req, res) => {
     try {
@@ -180,7 +163,6 @@ router.get("/brands", async (req, res) => {
 
 router.get("/sort/:id", async (req, res) => {
     const sortId = req.params.id;
-    console.log(sortId);
     try {
         let products;
         switch (sortId) {
@@ -211,16 +193,17 @@ router.get("/sort/:id", async (req, res) => {
 
 })
 
-/* router.post('/filter', async (req, res) => {
-    try {
-        const filterParams = req.body;
-        const filteredProducts = await Product.find(filterParams).exec();
-        res.json(filteredProducts);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
+function getImgIdFromCloudinary(path){
+    const pattern = new RegExp(`${cloudinary.folder}/[a-zA-Z_0-9]+`);
+    const execRes = pattern.exec(path);
+    let imgId;
+    if (execRes){
+        imgId = execRes[0];
+        return imgId;
     }
-}); */
-
+    else{
+        throw "can't extract id from path";
+    }
+}
 
 module.exports = router;

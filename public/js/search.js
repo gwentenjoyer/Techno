@@ -1,7 +1,9 @@
+console.log("search.js");
+
 const searchInput = document.querySelector('.search > #search');
 const searchButton = document.querySelector('.icon_search');
 
-searchInput.addEventListener("change", async () => {
+searchInput.addEventListener("input", async () => {
     const searchValue = searchInput.value;
     const result = await fetch("/products/search", {
         method: "POST",

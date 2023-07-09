@@ -381,6 +381,165 @@ select{
 
 .btn{
     padding: 0.5rem 0.75rem 0.35rem;
-/*     width: 100px; */
     margin: 0;
+}
+
+/* Cart styles */
+
+#modal-cart{
+    width: 70%;
+    max-width: 1000px;
+    min-width: 900px;
+    scroll-behavior: auto;
+}
+
+#modal-cart .modal_body{
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart-content{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+/*     justify-content: center; */
+    height: 356px;
+    overflow-y: auto;
+}
+.total-price{
+    background-color: orange;
+    color: black;
+    width: 100%;
+    padding: 10px 0px 10px 15px;
+    font-size: 13pt;
+}
+#total-price{
+    margin-left: 10px;
+}
+
+#modal-cart .modal_footer{
+    min-height: 50px;
+}
+
+.cart-item{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: black;
+    width: 90%;
+    font-size: 12pt;
+}
+
+.cart-item>div{
+    height: 120px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.cart-item table{
+    height: 100%;
+}
+.cart-item td:first-of-type{
+    padding-right: 3px;
+    text-align: right;
+}
+
+.cart-item td:last-of-type{
+    padding-left: 3px;
+    text-align: left;
+}
+
+.cart-item-image{
+    background-color: white;
+    padding: 10px;
+    width: 15%;
+}
+
+.cart-item-product{
+    width: 25%;
+}
+.cart-item-description{
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+}
+.cart-item-price{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+.cart-item-delete{
+    width: 15%;
+}
+
+.cart-item-image img{
+    width: 100%;
+}
+
+.cart-item-delete img{
+    width: 35px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.cart-item-delete img:hover {
+    cursor: pointer;
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+/* Account styles */
+
+#modal-account{
+    width: 50%;
+    max-width: 1000px;
+    min-width: 725px;
+    scroll-behavior: auto;
+}
+
+#modal-account .modal_body{
+    min-height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    font-family: "Times New Roman";
+}
+
+#modal-account .modal_body img{
+    width: 200px;
+}
+
+.profile-image{
+    border-right: 3px solid white;
+    padding: 12px;
+}
+
+/* .profile-info{
+    border: 1px solid pink;
+} */
+
+.profile-info > table td{   
+    font-size: 15pt;
+    padding: 15px;
+    border-bottom: 1px solid white;
+    border-top: 1px solid white;
+    word-wrap: break-word;
+}
+.profile-info > table td:first-of-type{
+    text-align: right;
+}
+.profile-info > table td:last-of-type{
+    font-style: italic;
+}
+
+#modal-account .modal_footer button{
+    width: 130px;
 }

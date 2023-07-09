@@ -21,65 +21,73 @@
 <body>
     <div class="wrapper container-fluid d-flex flex-column p-0 m-0">
         <header>
-            <div class="upper_header container-fluid">
-                <div class="container">
-                    <div class="row justify-content-end align-items-center">
-                        <a href="#" class="profile col-2 d-flex justify-content-center align-items-center" title="your profile...">
-                            <figure class="d-flex align-items-center my-1">
-                                <img src="img/icons/admin_light.png" alt="admin_icon..." id="profile_icon" class="icon">
-                                <figcaption class="status">Адміністратор</figcaption>
-                            </figure>
-                        </a>
+            <% if(user) {%>
+                <div class="upper_header container-fluid d-none">
+                    <div class="container">
+                        <div class="row justify-content-end align-items-center">
+                            <a href="#" class="profile col-2 d-flex justify-content-center align-items-center" title="your profile...">
+                                <figure class="d-flex align-items-center my-1">
+                                    <% if (user.isAdmin) {%>
+                                        <img src="img/icons/admin_light.png" alt="admin_icon..." id="profile_icon" class="icon">
+                                    <%} else {%>
+                                        <img src="img/icons/user_light.png" alt="user_icon..." id="profile_icon" class="icon">
+                                    <% } %>
+                                    <figcaption class="status">
+                                        <%= user.user_nickname %>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
+            <% } %>
             <div class="header container-fluid text-light">
 
                     <div class="row justify-content-between elements">
-                        <div id="menu" class="icon_img menu col-sm-2 p-3 ms-3" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                            <!--  -->
+                        <div id="menu" class="icon_img menu col-sm-2 p-3 col-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
                             <div class="line"></div>
                             <div class="line"></div>
                             <div class="line"></div>
                         </div>
-                        
-                        <!-- <div class="icon_img menu col-1 p-3 ms-3">
-                            <img src="img/icons/menu_light.png" alt="menu" title="main menu..." id="menu">
-                        </div> -->
 
-                        
-
-                        <a href="#" class="logo col-lg-2 col-md-2 col-sm-4  fs-1 fw-bold justify-content-center" title="Go home">
-                            Tech <span style="color: orange;">No</span>
+                        <a href="/" class="logo col-lg-2 col-md-2 col-sm-4  fs-1 fw-bold justify-content-center" title="Go home">
+                            Tech<span style="color: orange;">No</span>
                         </a>
                         
                         <div class="search col-5 px-2">
                             <input type="search" name="search" id="search" class="bg-light ps-3 pe-2 py-1" placeholder="Знайти щось...">
                             <div class="icon_search">
-                                <button class="find_btn text-dark px-2 fst-italic">
+                                <button class="find_btn text-dark px-2 d-flex align-items-center fst-italic">
                                     <img src="img/icons/search.png" id="search_img">
                                     <span class="d-none d-xl-inline">Знайти</span> 
                                 </button>
                             </div> 
                         </div>
-
-                        <div class="login col-1 d-flex">
-                            <button class="create_btn fw-bold py-2">Create</button>
-                        </div>
-
-                        <div class="icon_img theme_toggle col-1 p-3 d-none d-lg-block" title="toggle theme...">
-                            <img src="img/icons/theme_light.png" class="icon pe-1" >
-                        </div>
-
-<!--                         <div class="icon_img favorite col-1 p-3 d-none d-lg-block" title="your favorites...">
-                            <img src="img/icons/favorite_light.png" class="icon pe-1">
-                        </div> -->
-
-                        <div class="icon_img cart col-1 p-3 me-3" title="your basket...">
-                            <img src="img/icons/basket_light.png" class="icon pe-1">
-                        </div>
                         
+                        <div class="login col-2 d-flex">
+                            <% if(!user) {%>
+                                <button class="p-2 sign_btn px-3 fw-bold w-75 d-flex justify-content-center">Увійти</button>
+                            <%} else if(!user.isAdmin) {%>
+                                <button class="p-2 logout_btn px-3 fw-bold w-75 d-flex justify-content-center">Вийти</button>
+                            <% } else { %>
+                                <button class="create_btn fw-bold py-2 w-75 ">Створити</button>
+                            <%} %>
+                        </div>
+
+                        <div class="icon_img theme_toggle col-1 p-3 d-none d-lg-block" title="Змінити тему">
+                            <img src="img/icons/theme_light.png" class="icon pe-1" >
+                        </div>           
+                        <% if(user) {%>
+                            <% if (user.isAdmin) {%>
+                                <div class="icon_img logout col-1 p-3" title="Вихід">
+                                    <img src="img/icons/logout_light.png" class="icon pe-1">
+                                </div>  
+                            <%} else {%>   
+                                <div class="icon_img cart col-1 p-3" title="Корзина">
+                                    <img src="img/icons/basket_light.png" class="icon pe-1">
+                                </div>    
+                            <% } %>
+                        <% } %>     
                     </div>
 
             </div>
@@ -91,30 +99,14 @@
 
         <main>
             <div class="main container-fluid pb-2">
-                <div class="row justify-content-evenly">
-                    <!-- <div id="sidebar" class="sidebar-hidden p-3 col-3 bg-primary text-light d-flex flex-column">
-                        <label for="brand1"><input type="checkbox" name="brand1" id="brand1">Checkbox 1</label>
-                        <label for="brand2"><input type="checkbox" name="brand2" id="brand2">Checkbox 2</label>
-                        <label for="brand3"><input type="checkbox" name="brand3" id="brand3">Checkbox 3</label>
-                        <label for="brand4"><input type="checkbox" name="brand4" id="brand4">Checkbox 4</label>
-                        <label for="brand5"><input type="checkbox" name="brand5" id="brand5">Checkbox 5</label>
-                    </div> -->
-                    <div class="empty col-3" style="background-color: darkgoldenrod;"></div>
+                <div class="row justify-content-between">
+                    <div class="empty" style="background-color: darkgoldenrod;"></div>
                     <div class="offcanvas offcanvas-start col-3 p-0" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Обрати фільтри</h5>
                             <button type="button" class="btn-close icon" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
-                            
-<!--                             <div class="checkboxes bg-primary px-2">
-                                <div class="checkboxes_brand d-inline-block bg-secondary">
- 
-                                    
-
-                            </div>
-                            </div> -->
-
                             <div class="accordion" id="accordionPanelsStayOpenExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -123,14 +115,7 @@
                                         </button>
                                     </h2>
                                     <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                                        <div class="accordion-body">
-                                            <!-- <div class="checkbox w-100">
-                                                <input class="form-check-input" type="checkbox" value="" id="brand1">
-                                                <label class="form-check-label ms-2 text-dark" for="brand1">
-                                                    Бренд 1
-                                                </label>
-                                            </div> -->
-                                        </div>
+                                        <div class="accordion-body"></div>
                                     </div>
                                 </div>
                                 <div class="accordion-item">
@@ -240,23 +225,36 @@
                             </div>
                         </div>
                         <div class="itembar container d-flex justify-content-start flex-wrap pb-2"></div>
-                    </div>
-                    
+                    </div>    
                 </div>
                 
             </div>
         </main>
 
-        <footer class="container-fluid text-justify p-3">
-            <h3>Footer text</h3>
-            <!-- <button class="p-2 edit_btn resetLS w-25">Reset LS</button> -->
-            <button class="p-2 sign_btn w-25">Login</button>
-            <p class="f-text">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro nisi ipsam facilis non veniam culpa. Veritatis magnam est aut at, tempora eligendi itaque illo quia provident ad quae a eum?
-                A, itaque explicabo? Nostrum, quidem? Omnis eum numquam unde odio deserunt, temporibus nulla doloremque fugiat at suscipit maiores dolore. Eum iure minus rerum sequi facere culpa explicabo, commodi cupiditate quaerat!
-                Nemo, labore non? Mollitia vel dolorem a aliquid molestias dicta provident fuga similique quas nam? Corporis rerum officia, porro magnam veritatis tenetur iste, deleniti nisi amet earum provident dicta possimus!
-            </p>
-            <div class="last m-auto bg-dark p-3">NoCopyright &copy; Techno 2023</div>
+        <footer>
+            <div class="footer container-fluid text-justify p-0">
+                <div class="footer-info container-fluid col-12 d-flex justify-content-center p-0">
+                    <div class="section section-1">
+                        <h1 class="d-inline-block py-3">Tech<span style="color: orange;">No</span></h1>
+                        <div class="social">
+                            <div class="social-title">Ми в соцмережах:</div>
+                            <div class="social-media">
+                                <a href="https://www.youtube.com" target="_blank" title="Youtube"><img src="img/icons/youtube.png"></a>
+                                <a href="https://www.instagram.com/" target="_blank" title="Instagram"><img src="img/icons/instagram.png"></a>
+                                <a href="https://www.facebook.com" target="_blank" title="Facebook"><img src="img/icons/facebook.png"></a>
+                                <a href="https://twitter.com" target="_blank" title="Twitter"><img src="img/icons/twitter.png"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section section-2">
+                        
+                    </div>
+                    <div class="section section-3">
+
+                    </div>
+                </div>
+                <div class="last m-auto text-center p-3 fst-italic">NoCopyright &copy; Techno&trade; 2023</div>
+            </div>
         </footer>
     </div>
 
@@ -267,7 +265,7 @@
         <div class="modal_window" id="modal-product">
             <div class="modal_header">
                 <div class="modal_title d-flex align-items-center">
-                    <h4 id="modal_title">Product Options</h4>
+                    <h4 id="modal_title">Налаштування продукту</h4>
                 </div>
                 <button class="modal-cross" data-close="true">
                     <span>&times;</span>
@@ -453,20 +451,82 @@
         </div>
     
         <div class="modal_window" id="modal-cart">
-            
+            <div class="modal_header">
+                <div class="modal_title d-flex align-items-center">
+                    <h4 id="modal_title">Корзина</h4>
+                </div>
+                <button class="modal-cross" data-close="true">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal_body">
+                <div class="cart-content"></div>
+                <div class="total-price">
+                    Загальна сума:<span id="total-price" class="fw-bold">0</span> ₴
+                </div>
+            </div>
+            <div class="modal_footer">
+                <div class="buttons w-25">
+                    <button class="order_btn">Замовити</button>
+                    <button class="cancel_btn">Скасувати</button>
+                </div>
+            </div>
         </div>
     
         <div class="modal_window" id="modal-account">
-            
+            <div class="modal_header">
+                <div class="modal_title d-flex align-items-center">
+                    <h4 id="modal_title">Профіль</h4>
+                </div>
+                <button class="modal-cross" data-close="true">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal_body">
+                <div class="profile-image">
+                    <img src="img/icons/admin_light.png" alt="">
+                </div>
+                <div class="profile-info">
+                    <table>
+                        <tr>
+                            <td>Нікнейм:</td>
+                            <td>CyberPatrick</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td>forpresentelite@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td>Статус:</td>
+                            <td>Адміністратор</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="modal_footer">
+                <div class="buttons w-50">
+                    <button class="logout_btn">Вийти</button>
+                </div>
+            </div>
         </div>
     </div>
-    
 
+    <% if (user) {%>
+        <script src="js/logout.js"></script>
+        <script src="js/account.js"></script>
+        <% if(user.isAdmin) {%>
+            <script src="js/admin.js"></script>
+        <%} else {%>
+            <script src="js/user.js"></script>
+        <% } %>
+    <% } else { %>
+        <script src="js/modalLogin.js"></script>
+    <% } %>
     <script src="js/front-actions.js"></script>
     <script src="js/filter.js"></script>
-    <script src="js/modalProduct.js"></script>
     <script src="js/sort.js"></script>
     <script src="js/search.js"></script>
+    <script src="js/general.js"></script>
     
 </body>
 </html>

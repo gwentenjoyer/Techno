@@ -1,3 +1,5 @@
+console.log("front-actions.js");
+
 document.addEventListener('DOMContentLoaded', function() {
 
     /* Theme toggle function */
@@ -44,34 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
     /* END Theme toggle function */
 
 
-    /* Profile Icon toggle function */
-
-    let profile = document.querySelector('.profile');
-    let profileImg = document.querySelector('.profile>figure>img');
-    let originalSrc = profileImg.getAttribute("src");
-    /* let status = document.querySelector(".profile>figure>figcaption"); */
-
-    profile.addEventListener('mouseenter', function() {
-        let darkProfileIcon = getIconName(originalSrc, false);
-        profileImg.setAttribute("src", darkProfileIcon);
-    });
-
-    profile.addEventListener('mouseleave', function() {
-        let profileIconName = profileImg.getAttribute("src");
-        if (isDarkTheme)
-            profileImg.setAttribute("src", originalSrc);
-    });
-
-    /* END Profile Icon toggle function */
-
-
-    /* Menu Icon toggle function */
+    /* Menu */
 
     let menu = document.querySelector("#menu");
     let lines = document.querySelectorAll(".line");
     let sidebarOverlay = document.querySelector(".sidebar-overlay");
-    let sidebar = document.querySelector(".offcanvas");
-    /* sidebar.classList.add("sidebar-hidden"); */
     let isMenuClosed = true;
 
     menu.addEventListener('click', function() {
@@ -79,13 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
         lines[2].classList.toggle("line-3");
         changeItemSize();
         changeContainer();
-/*         sidebar.classList.toggle("show");
-        sidebarOverlay.classList.toggle("sidebar-display"); */
     });
 
     sidebarOverlay.addEventListener("click", function() {
-/*         sidebar.classList.toggle("show");
-        sidebarOverlay.classList.toggle("sidebar-display"); */
         changeItemSize();
         changeContainer();
         lines[1].classList.toggle("line-2");
@@ -100,98 +75,121 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     function changeContainer() {
-        let mainRow = document.querySelector(".main>.row");
+        let mainRow = document.querySelector(".main > .row");
         let itemsContainer = document.querySelector(".items");
-
-        if (isMenuClosed){
-            itemsContainer.style.justifyContent = 'center';
-            mainRow.style.justifyContent = 'end';
-        } else {
-            itemsContainer.style.justifyContent = 'center';
-            mainRow.style.justifyContent = 'center';
-        }
-        itemsContainer.style.transition = "0s";
-        mainRow.style.transition = "0s";
-    }
-
-/*     function changeFontSize() {
-        const fontsProduct = [];
-        let discountFont = document.querySelectorAll(".card .details > .discount");
-        let idFont = document.querySelectorAll(".card .details > .product_id");
-        let oldPriceFont = document.querySelectorAll(".card .details > .old_price");
-        let currentPriceFont = document.querySelectorAll(".card .details > .current_price");
-        let availabilityFont = document.querySelectorAll(".card .details > .availability");
-        fontsProduct.push(discountFont, idFont, oldPriceFont, currentPriceFont, availabilityFont);
-        if (isMenuClosed) {
-            fontsProduct.forEach((font) => {
-                font.classList.remove("small_font");
-            })
-        } else {
-            fontsProduct.forEach((font) => {
-                font.classList.add("small_font");
-            })
-        }
-    } */
-
-    function changeItemSize() {
-        let itemsContainer = document.querySelector(".items");
-        let itemCards = document.querySelectorAll(".card");
-        let itemProps = document.querySelectorAll(".card .property-list>li>span");
-        let itembar = document.querySelector(".itembar");
-
-        /* itemCards.style.transform.scale = "0.9"; */
-
-        if (isMenuClosed) {
+        const sidebar = document.querySelector(".offcanvas");
+        const emptyContainer = document.querySelector(".empty");
+        if (!isMenuClosed){
             itemsContainer.classList.remove('col-12');
             itemsContainer.classList.add('col-9');
-            itembar.classList.add("px-2","ps-3");
-            itemProps.forEach(function(prop) {
-                prop.style.fontSize = "10.5px";
-            });
-            itemCards.forEach(function(card) {
-                card.style.width = '14.45rem';
-                /* card.style.transform = "scale(0.7)"; */
-            });
-            isMenuClosed = false;
+            itemsContainer.style.justifyContent = 'center';
+            mainRow.style.justifyContent = 'end';
+            emptyContainer.style.width = `${sidebar.clientWidth}px`;          
         } else {
             itemsContainer.classList.remove('col-9');
             itemsContainer.classList.add('col-12');
+            itemsContainer.style.justifyContent = 'center';
+            mainRow.style.justifyContent = 'center';
+            emptyContainer.style.width = `0px`;
+        }
+    }
+
+    function changeItemSize() {
+        let itemCards = document.querySelectorAll(".card");
+        let itembar = document.querySelector(".itembar");
+
+        let itemPropsFont = document.querySelectorAll(".card .property-list>li>span");
+        let discountFont = document.querySelectorAll(".card .details > .discount");
+        let idFont = document.querySelectorAll(".card .details > .product_id");
+        let oldPriceFont = document.querySelectorAll(".card .details > .old_price > del");
+        let currentPriceFont = document.querySelectorAll(".card .details > .current_price");
+        let availabilityFont = document.querySelectorAll(".card .details > .availability");
+        let titleFont = document.querySelectorAll(".card .product-title > .card-title");
+        let brandFont = document.querySelectorAll(".card .product-title > .card-brand");
+        if (isMenuClosed) {
+            itembar.classList.add("px-2","ps-3");
+            itemCards.forEach(card => {
+                card.style.width = '14.45em';
+            });
+
+            itemPropsFont.forEach(font => {
+                font.style.fontSize = "10.5px";
+            });
+            discountFont.forEach(font => {
+                font.style.fontSize = "12px";
+                font.style.padding = "2px 5px";
+            });
+            idFont.forEach(font => {
+                font.style.fontSize = "12px";
+            });
+            oldPriceFont.forEach(font => {
+                font.style.fontSize = "14px";
+            });
+            currentPriceFont.forEach(font => {
+                font.style.fontSize = "16px";
+            });
+            availabilityFont.forEach(font => {
+                font.style.fontSize = "13px";
+            });
+            titleFont.forEach(font => {
+                font.style.fontSize = "14px";
+            });
+            brandFont.forEach(font => {
+                font.style.fontSize = "12px";
+            });
+
+            isMenuClosed = false;
+        } else {
             itembar.classList.remove("px-2","ps-3");
-            itemProps.forEach(function(prop) {
-                prop.style.fontSize = "12px";
+            itemCards.forEach(card => {
+                card.style.width = '16.55em';
             });
-            itemCards.forEach(function(card) {
-                card.style.width = '16.55rem';
-                /* card.style.transform = "scale(1)"; */
+
+            itemPropsFont.forEach(font => {
+                font.style.fontSize = "12px";
             });
+            discountFont.forEach(font => {
+                font.style.fontSize = "14px";
+                font.style.padding = "2px 10px";
+            });
+            idFont.forEach(font => {
+                font.style.fontSize = "13px";
+            });
+            oldPriceFont.forEach(font => {
+                font.style.fontSize = "16px";
+            });
+            currentPriceFont.forEach(font => {
+                font.style.fontSize = "19px";
+            });
+            availabilityFont.forEach(font => {
+                font.style.fontSize = "14px";
+            });
+            titleFont.forEach(font => {
+                font.style.fontSize = "16px";
+            });
+            brandFont.forEach(font => {
+                font.style.fontSize = "14px";
+            });
+            
             isMenuClosed = true;
         }
     }
 
+/* END Menu */
 
-    /* Window Scroll function */
+/* Window Scroll function */
 
-    window.onscroll = function() {myFunction()};
+let header = document.querySelector("header");
+let main = document.querySelector("main");
+const sidebar = document.querySelector(".offcanvas");
+main.style.paddingTop = header.offsetHeight+"px";
+sidebar.style.marginTop = `${header.offsetHeight}px`;
 
-    let header = document.querySelector("header");
-    let main = document.querySelector("main");
+window.addEventListener('resize', function() {
     main.style.paddingTop = header.offsetHeight+"px";
-    /* console.log(header.offsetHeight); */
-    let sticky = header.offsetTop;
-
-    function myFunction() {
-        if (window.pageYOffset >= sticky) {
-            header.classList.add("sticky");
-            header.classList.add("header-hidden");
-        } else {
-            header.classList.remove("sticky");
-            header.classList.remove("header-hidden");
-        }
-    }
-
-    /* END Window Scroll function */
+    sidebar.style.marginTop = `${header.offsetHeight+3}px`;
+});
 
 
-    
-
+/* END Window Scroll function */
 });
