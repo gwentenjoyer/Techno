@@ -58,9 +58,6 @@ function displayProducts(products) {
                         </ul>
                     </div>
                     <div class="buttons d-flex justify-content-between p-2">
-                        <button class="edit_btn" onclick="modifyModal('${product._id}')">Редагувати</button>
-                        <button class="delete_btn" onclick="removeElementFromDB('${product._id}')">Видалити</button>
-                        <button class="addtocart_btn" onclick="addToCart('${product._id}')">Добавити в корзину</button>
                     </div> 
                 </div>
             </div>
@@ -98,9 +95,14 @@ function displayProducts(products) {
                 break;
         }
 
+        if (typeof isAdministrator === 'function') {
+            isAdministrator(newProduct, products);
+        }
+        else if (typeof isUser === 'function'){
+            isUser(newProduct, products);
+        }
+        
         document.querySelector(".itembar").appendChild(newProduct);
-
-        isAdministrator(product);
     })
 }
 

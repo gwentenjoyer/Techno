@@ -122,3 +122,12 @@ buttonsContainer.forEach( async () => {
     console.log(deleteBtn.innerHtml);
     
 }) */
+
+function isAdministrator(newProduct, products) {
+    const cardsContainer = newProduct.getElementsByClassName("buttons")[0];
+    console.log("why, ", cardsContainer);
+    cardsContainer.innerHTML = ""
+    cardsContainer.innerHTML += `
+        <button class="addtocart_btn" onclick="addToCart('${product._id}')">Добавити в корзину</button>
+    `;
+}
