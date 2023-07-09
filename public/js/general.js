@@ -58,7 +58,7 @@ function displayProducts(products) {
                         </ul>
                     </div>
                     <div class="buttons d-flex justify-content-between p-2">
-                        
+                    
                     </div> 
                 </div>
             </div>
@@ -96,9 +96,14 @@ function displayProducts(products) {
                 break;
         }
 
+        if (typeof isAdministrator === 'function') {
+            isAdministrator(newProduct, products);
+        }
+        else if (typeof isUser === 'function'){
+            isUser(newProduct, products);
+        }
+        
         document.querySelector(".itembar").appendChild(newProduct);
-
-        isAdministrator(product);
     })
 }
 
