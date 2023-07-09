@@ -112,13 +112,13 @@ cancelBtn.addEventListener("click", () => {
     cartContainer.innerHTML = "";
     hideModal();
 })
-/* const buttonsContainer = document.querySelectorAll(".card .buttons");
-buttonsContainer.forEach( async () => {
-    editBtn = document.querySelector(".card .buttons .edit_btn");
-    editBtn.style.display = "none";
-    console.log(editBtn.innerHtml);
-    deleteBtn = document.querySelector(".card .buttons .delete_btn");
-    deleteBtn.style.display = "none";
-    console.log(deleteBtn.innerHtml);
-    
-}) */
+
+
+/* function isUser(product) {
+    const cardsContainer = document.querySelector(".card .buttons");
+    const cartImg = document.querySelector(".header .cart");
+    cardsContainer.forEach(container => {
+        if (cartImg)
+            container.innerHTML = `<button class="addtocart_btn" onclick="addToCart('${product._id}')">Добавити в корзину</button>`
+    })  
+} */

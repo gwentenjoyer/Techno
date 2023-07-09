@@ -28,11 +28,16 @@ function setupProfile(profileData) {
     const nicknameField = document.querySelector("#user-nickname");
     const emailField = document.querySelector("#user-email");
     const statusField = document.querySelector("#user-status");
+    const profileImage = document.querySelector("#modal-account .profile-image")
 
     nicknameField.innerHTML = profileData.user_nickname;
     emailField.innerHTML = profileData.user_email;
     if (profileData.isAdmin) {
-        
+        statusField.innerHTML = "Адміністратор";
+        profileImage.setAttribute("src", "img/icons/admin_light.png")
+    } else {
+        statusField.innerHTML = "Користувач";
+        profileImage.setAttribute("src", "img/icons/user_light.png")
     }
 }
 

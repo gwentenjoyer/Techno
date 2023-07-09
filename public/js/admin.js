@@ -210,12 +210,3 @@ fileInput.onchange = evt => {
         imagePath.value = "Файл не вибрано";
     }
 }
-
-function isAdministrator(product) {
-    const cardsContainer = document.querySelector(".card .buttons");
-/*     cardsContainer.forEach(container => { */
-        if (createBtn)
-            cardsContainer.innerHTML = `<button class="edit_btn" onclick="modifyModal('${product._id}')">Редагувати</button>
-        <button class="delete_btn" onclick="removeElementFromDB('${product._id}')">Видалити</button>`
-/*     })   */
-}
