@@ -112,6 +112,7 @@ cancelBtn.addEventListener("click", () => {
     cartContainer.innerHTML = "";
     hideModal();
 })
+
 /* const buttonsContainer = document.querySelectorAll(".card .buttons");
 buttonsContainer.forEach( async () => {
     editBtn = document.querySelector(".card .buttons .edit_btn");
@@ -131,3 +132,14 @@ function isUser(newProduct, products) {
         <button class="addtocart_btn" onclick="addToCart('${product._id}')">Добавити в корзину</button>
     `;
 }
+
+
+
+/* function isUser(product) {
+    const cardsContainer = document.querySelector(".card .buttons");
+    const cartImg = document.querySelector(".header .cart");
+    cardsContainer.forEach(container => {
+        if (cartImg)
+            container.innerHTML = `<button class="addtocart_btn" onclick="addToCart('${product._id}')">Добавити в корзину</button>`
+    })  
+} */

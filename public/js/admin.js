@@ -209,6 +209,7 @@ fileInput.onchange = evt => {
         prodImage.src = "";
         imagePath.value = "Файл не вибрано";
     }
+
 }
 
 function isAdministrator(newProduct, products) {
