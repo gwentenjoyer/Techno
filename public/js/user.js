@@ -124,7 +124,7 @@ buttonsContainer.forEach( async () => {
     
 }) */
 
-function isUser(newProduct, products) {
+function isUser(newProduct, product) {
     const cardsContainer = newProduct.getElementsByClassName("buttons")[0];
     console.log("why, ", cardsContainer);
     cardsContainer.innerHTML = ""

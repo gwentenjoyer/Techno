@@ -97,27 +97,16 @@ function displayProducts(products) {
         }
 
         if (typeof isAdministrator === 'function') {
-            isAdministrator(newProduct, products);
+            isAdministrator(newProduct, product);
         }
         else if (typeof isUser === 'function'){
-            isUser(newProduct, products);
+            isUser(newProduct, product);
         }
         
         document.querySelector(".itembar").appendChild(newProduct);
     })
 }
 
-/* function isAdministrator(product) {
-    const cardsContainer = document.querySelector(".card .buttons");
-    cardsContainer.forEach(container => {
-        if (createBtn)
-            container.innerHTML = `<button class="edit_btn" onclick="modifyModal('${product._id}')">Редагувати</button>
-        <button class="delete_btn" onclick="removeElementFromDB('${product._id}')">Видалити</button>`;
-        else 
-            container.innerHTML = `<button class="addtocart_btn" onclick="addToCart('${product._id}')">Добавити в корзину</button>`
-    })  
-}
- */
 let modalOverlay = document.querySelector("#modal-overlay");
 let modalWindows = document.querySelectorAll(".modal_window");
 

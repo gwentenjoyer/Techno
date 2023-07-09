@@ -475,7 +475,7 @@ footer{
 .section-2{
     border: 1px solid green;
     width: 40%;
-    ;
+    justify-content: space-around;
 }
 .section-3{
     border: 1px solid pink;
