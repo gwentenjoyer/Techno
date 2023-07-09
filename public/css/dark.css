@@ -18,6 +18,7 @@ body{
 
 .header {
     background-color: darkslategray;
+    border-bottom: 3px solid orange;
 }
 
 .logo, .logo:hover {
@@ -29,10 +30,11 @@ body{
 }
 
 .itembar{
-    background-color: darkgoldenrod;
+    
 }
 
 .items_header{
+    border-bottom: 3px solid orange;
     background-color: orange;
 }
 /*  */
@@ -64,4 +66,9 @@ body{
 
 footer{
     color: white;
+    background-color: rgb(16, 25, 33);
+}
+
+.footer-logo{
+    color: white;    
 }

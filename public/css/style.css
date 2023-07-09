@@ -8,13 +8,9 @@ header{
     z-index: 100;
 }
 
-/* .header .hidden {
-    top: -100px; 
-} */
-
-.header{
+/* .header{
     border-bottom: 3px solid orange;
-}
+} */
 
 header .header .elements>div, header .header .elements>a{
     display: flex;
@@ -250,6 +246,7 @@ header .header .elements>div:not(.login):hover, header .header .elements>a:hover
     display: flex;
     gap: 5px;
     justify-content: center;
+    height: 60px;
 }
 
 .discount{
@@ -351,9 +348,14 @@ header .header .elements>div:not(.login):hover, header .header .elements>a:hover
     display: none;
 }
 
-.items_header{
-    border-bottom: 3px solid orange;
+.itembar{
+    background-color: darkgoldenrod;
 }
+
+#sort-title{
+    color: black;
+}
+
 .sort{
     padding: 10px 3% 10px 0px;
     max-height: 100%;
@@ -397,9 +399,7 @@ header .header .elements>div:not(.login):hover, header .header .elements>a:hover
 .accordion-input{
     width: 90%;
 }
-.last{
-    color: white;
-}
+
 /* END Main */
 
 
@@ -407,8 +407,7 @@ header .header .elements>div:not(.login):hover, header .header .elements>a:hover
 /* Footer styles */
 
 footer{
-    border: 1px solid red;
-    background-color: rgb(16, 25, 33);
+    
 }
 
 .footer{
@@ -416,11 +415,17 @@ footer{
     flex-direction: column;
 }
 
+.footer-logo{
+    font-size: 50px;    
+    font-weight: bold;
+}
+
 .footer-info{
-    border: 1px solid lime;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
 }
 
 .social{
@@ -431,15 +436,17 @@ footer{
     border-radius: 8px;
 }
 
-.social-title{
-    background-color: black;
+.section-title{
     width: 100%;
     text-align: center;
     border-radius: 8px 8px 0px 0px;
     padding: 5px 0px;
+    color: white;
+    background-color: black;
 }
 
-.social-media{
+.section-content{
+    color: black;
     background-color: orange;
     display: flex;
     flex-direction: row;
@@ -465,7 +472,6 @@ footer{
 }
 
 .section-1{
-    border: 1px solid red;
     width: 30%;
 }
 .section-1 h1{
@@ -473,21 +479,46 @@ footer{
     text-align: center;
 }
 .section-2{
-    border: 1px solid green;
     width: 40%;
-    justify-content: space-around;
+    justify-content: center;
+    border-left: 2px solid white;
+    border-right: 2px solid white;
 }
 .section-3{
-    border: 1px solid pink;
     width: 40%;
+    justify-content: center;
 }
 
-.contact-title{
-    border: 1px solid red;
+.contact-title, .about-title{
+    font-size: 24px;
+    text-align: left;
+    padding-left: 10px;
 }
 
-.contact-info{
-    border: 1px solid lime;
+.contact-content {
+    font-style: italic;
+}
+
+.contact-content table{
+    width: 100%;
+    padding: 5px;
+}
+
+.contact-content table td{
+    padding: 5px 0px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.about-content{
+    text-align: justify;
+    padding: 5px 10px;
+    text-indent: 20px;
 }
 
 /* END Footer */
+
+.last{
+    background-color:rgb(28, 28, 28);
+    color: white;
+}

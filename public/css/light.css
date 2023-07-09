@@ -19,6 +19,7 @@ body{
 
 .header{
     background-color: lightgrey;
+    border-bottom: 3px solid rgb(119, 119, 119);
 }
 
 .logo, .logo:hover {
@@ -30,8 +31,13 @@ body{
     /* background-color: rgba(0, 0, 0, 0.2); */
 }
 
+.items_header{
+    background-color: rgb(181, 181, 181);
+    border-bottom: 3px solid rgb(181, 181, 181);
+}
+
 .itembar{
-    background-color: khaki;
+    background-color: rgb(119, 119, 119);
 }
 /*  */
 
@@ -40,7 +46,7 @@ body{
 }
 
 .main{
-    background-color:lavender;
+    background-color:lightgrey;
 }
 
 .offcanvas{
@@ -59,4 +65,9 @@ body{
 
 footer{
     color: black;
+    background-color: rgb(119, 119, 119);
+}
+
+.footer-logo{
+    color: black;    
 }

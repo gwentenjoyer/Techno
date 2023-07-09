@@ -4,33 +4,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
     /* Theme toggle function */
 
+    
+
     let themeToggle = document.querySelector('.theme_toggle');
-    let isDarkTheme = true;
     let icons = document.querySelectorAll(".icon");
+    let localOldTheme = localStorage.getItem("isDarkTheme");
+    let isDarkTheme;
+    if(typeof localOldTheme === undefined){
+        console.log("adding theme");
+        isDarkTheme = true;
+        localStorage.setItem("isDarkTheme", isDarkTheme);
+    }
+    else{
+        isDarkTheme = (localOldTheme === 'true');
+        console.log(localOldTheme, isDarkTheme)
+    }
+    setTheme(isDarkTheme);
     let transition = "0.5s all ease";
     
     themeToggle.addEventListener('click', function() {
-        let rootElement = document.documentElement;
-        if (isDarkTheme) {
-            let linkElement = document.querySelector('link[href="css/dark.css"]');
-            linkElement.setAttribute('href', 'css/light.css');
-            rootElement.classList.remove('dark');
-            isDarkTheme = false;
-        } else {
-            let linkElement = document.querySelector('link[href="css/light.css"]');
-            linkElement.setAttribute('href', 'css/dark.css');
-            rootElement.classList.add('dark');
-            isDarkTheme = true;
-        }
-        rootElement.style.transition = transition;
+        setTheme(!isDarkTheme);
+        isDarkTheme = !isDarkTheme;
+        document.documentElement.style.transition = transition;
         updateIcons();
     });
 
+    function setTheme(isDarkTheme){
+        if (isDarkTheme) {
+            let linkElement = document.getElementById("themeLink");
+            linkElement.setAttribute('href', 'css/dark.css');
+            document.documentElement.classList.add('dark');
+            localStorage.setItem("isDarkTheme", true);
+        } else {
+            let linkElement = document.getElementById("themeLink");
+            linkElement.setAttribute('href', 'css/light.css');
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem("isDarkTheme", false);
+        }
+    }
+
     function getIconName(iconName, isDarkTheme) {
         if (!isDarkTheme) 
-            return iconName.replace("_light.png", ".png");
+            return iconName.replace("_light.png", "_dark.png");
         else 
-            return iconName.replace(".png", "_light.png");
+            return iconName.replace("_dark.png", "_light.png");
     }
 
     function updateIcons() {

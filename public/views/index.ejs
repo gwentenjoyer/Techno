@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Bitter:ital,wght@1,300&family=Chakra+Petch:wght@300&family=Cormorant+Garamond:ital,wght@0,500;1,300&family=Gabriela&family=Montserrat:wght@200&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/dark.css">
+    <link rel="stylesheet" id="themeLink" href="css/dark.css">
 </head> 
 <body>
     <div class="wrapper container-fluid d-flex flex-column p-0 m-0">
@@ -104,7 +104,7 @@
                     <div class="offcanvas offcanvas-start col-3 p-0" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
                         <div class="offcanvas-header">
                             <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Обрати фільтри</h5>
-                            <button type="button" class="btn-close icon" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                         </div>
                         <div class="offcanvas-body">
                             <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -203,7 +203,7 @@
                     <div class="items container col-12 d-flex flex-wrap justify-content-center px-0">
                         <div class="items_header container d-flex justify-content-between p-0">
                             <div class="sort col-12 d-flex justify-content-end align-items-center">
-                                <span>Спочатку</span>
+                                <span id="sort-title">Спочатку</span>
                                 <div class="btn-group ms-2" role="group" aria-label="Button group with nested dropdown">
                                     <div class="btn-group" role="group">
                                         <button id="btnSortDrop" type="button" class="btn bg-dark text-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -235,10 +235,10 @@
             <div class="footer container-fluid text-justify p-0">
                 <div class="footer-info container-fluid col-12 d-flex justify-content-center p-0">
                     <div class="section section-1">
-                        <h1 class="d-inline-block py-3">Tech<span style="color: orange;">No</span></h1>
+                        <h1 class="footer-logo d-inline-block py-3">Tech<span style="color: orange;">No</span></h1>
                         <div class="social">
-                            <div class="social-title">Ми в соцмережах:</div>
-                            <div class="social-media">
+                            <div class="section-title social-title">Ми в соцмережах:</div>
+                            <div class="section-content social-media">
                                 <a href="https://www.youtube.com" target="_blank" title="Youtube"><img src="img/icons/youtube.png"></a>
                                 <a href="https://www.instagram.com/" target="_blank" title="Instagram"><img src="img/icons/instagram.png"></a>
                                 <a href="https://www.facebook.com" target="_blank" title="Facebook"><img src="img/icons/facebook.png"></a>
@@ -247,21 +247,33 @@
                         </div>
                     </div>
                     <div class="section section-2">
-                        <div class="contact-title">
+                        <div class="section-title contact-title">
                             Контактна інформація
                         </div>
-                        <div class="contact-info">
-                            <ul>
-                                <li>+38(097-111-11-11)</li>
-                                <li>forpresentelite@gmail.com</li>
-                            </ul>
+                        <div class="section-content contact-content">
+                                <table>
+                                    <tr>
+                                        <td><span class="contact-phone">+38(097-111-11-11)</span></td>
+                                        <td><span id="contact-email">cyberpatrick@gmail.com</span></td>
+                                        
+                                    </tr>
+                                    <tr>
+                                        <td><span class="contact-phone">+38(097-777-77-77)</span></td>
+                                        <td><span id="contact-email">forpresentelite@gmail.com</span></td>
+                                    </tr>
+                                </table>
                         </div>
                     </div>
                     <div class="section section-3">
-
+                        <div class="section-title about-title">
+                            Про нас
+                        </div>
+                        <div class="section-content about-content">
+                            Ми, компанія Techno, працюємо з 2001 року. Займаємося продажем блоків живлення для ПК. Дякуємо всім, хто користується нашими послугами та відвідує наш сайт.
+                        </div>
                     </div>
                 </div>
-                <div class="last m-auto text-center p-3 fst-italic">NoCopyright &copy; Techno&trade; 2023</div>
+                <div class="last container-fluid m-auto text-center p-3 fst-italic">NoCopyright &copy; Techno&trade; 2023</div>
             </div>
         </footer>
     </div>

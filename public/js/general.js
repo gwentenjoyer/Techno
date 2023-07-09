@@ -26,7 +26,7 @@ function displayProducts(products) {
                 <div class="image_container">
                     <img src="${product.cloudinaryPublicUrl}" class="card-img-top p-4" alt="...">
                     <div class="details">
-                        <span class="m-0 product_id text-secondary">${product._id}</span>
+                        <span class="m-0 product_id text-secondary d-none">${product._id}</span>
                         <span class="old_price"></span>
                         <span class="current_price"></span>
                         <span class="availability">${product.availability}</span>
