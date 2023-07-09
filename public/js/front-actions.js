@@ -23,13 +23,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let transition = "0.5s all ease";
     
     themeToggle.addEventListener('click', function() {
-        setTheme(!isDarkTheme);
         isDarkTheme = !isDarkTheme;
+        setTheme(isDarkTheme);
         document.documentElement.style.transition = transition;
-        updateIcons();
     });
 
     function setTheme(isDarkTheme){
+        updateIcons();
         if (isDarkTheme) {
             let linkElement = document.getElementById("themeLink");
             linkElement.setAttribute('href', 'css/dark.css');
