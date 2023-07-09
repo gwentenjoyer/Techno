@@ -249,7 +249,6 @@ header .header .elements>div:not(.login):hover, header .header .elements>a:hover
 .card .buttons{
     display: flex;
     gap: 5px;
-/*     flex-direction: column; */
     justify-content: center;
 }
 
@@ -476,10 +475,19 @@ footer{
 .section-2{
     border: 1px solid green;
     width: 40%;
+    ;
 }
 .section-3{
     border: 1px solid pink;
     width: 40%;
+}
+
+.contact-title{
+    border: 1px solid red;
+}
+
+.contact-info{
+    border: 1px solid lime;
 }
 
 /* END Footer */

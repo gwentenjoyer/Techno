@@ -107,7 +107,7 @@ function displayProducts(products) {
     })
 }
 
-function isAdministrator(product) {
+/* function isAdministrator(product) {
     const cardsContainer = document.querySelector(".card .buttons");
     cardsContainer.forEach(container => {
         if (createBtn)
@@ -117,7 +117,7 @@ function isAdministrator(product) {
             container.innerHTML = `<button class="addtocart_btn" onclick="addToCart('${product._id}')">Добавити в корзину</button>`
     })  
 }
-
+ */
 let modalOverlay = document.querySelector("#modal-overlay");
 let modalWindows = document.querySelectorAll(".modal_window");
 

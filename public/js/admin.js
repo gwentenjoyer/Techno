@@ -214,7 +214,6 @@ fileInput.onchange = evt => {
 
 function isAdministrator(newProduct, products) {
     const cardsContainer = newProduct.getElementsByClassName("buttons")[0];
-    console.log("why, ", cardsContainer);
     cardsContainer.innerHTML = `
         <button class="edit_btn" onclick="modifyModal('${product._id}')">Редагувати</button>
         <button class="delete_btn" onclick="removeElementFromDB('${product._id}')">Видалити</button>

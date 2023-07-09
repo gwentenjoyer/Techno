@@ -28,7 +28,7 @@ function setupProfile(profileData) {
     const nicknameField = document.querySelector("#user-nickname");
     const emailField = document.querySelector("#user-email");
     const statusField = document.querySelector("#user-status");
-    const profileImage = document.querySelector("#modal-account .profile-image")
+    const profileImage = document.querySelector("#modal-account .profile-image > img")
 
     nicknameField.innerHTML = profileData.user_nickname;
     emailField.innerHTML = profileData.user_email;
